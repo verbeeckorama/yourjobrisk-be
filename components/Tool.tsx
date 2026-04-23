@@ -36,19 +36,19 @@ function pressure(
   return Math.max(0, Math.min(1, (score / 100) * adoption * horizonFactor));
 }
 
-const factorLabels: Record<"fast" | "central" | "slow", string> = {
+const factorLabels: Record<"fast" | "current" | "slow", string> = {
   slow: "Slow: AI tooling stays in pilots",
-  central: "Central: current adoption curve continues",
+  current: "Current: today's adoption curve continues",
   fast: "Fast: broad enterprise rollout",
 };
 
 export default function Tool({ features }: Props) {
-  const [scenario, setScenario] = useState<"slow" | "central" | "fast">(
-    "central"
+  const [scenario, setScenario] = useState<"slow" | "current" | "fast">(
+    "current"
   );
   const [horizon, setHorizon] = useState<number>(10);
-  const [selectedNuts, setSelectedNuts] = useState<string>("BE10"); // Brussels
-  const [selectedIsco, setSelectedIsco] = useState<string>("2"); // Professionals
+  const [selectedNuts, setSelectedNuts] = useState<string | null>(null);
+  const [selectedIsco, setSelectedIsco] = useState<string | null>(null);
 
   const adoption = scenario === "slow" ? 0.25 : scenario === "fast" ? 0.65 : 0.4;
 
@@ -66,14 +66,19 @@ export default function Tool({ features }: Props) {
     [features]
   );
 
-  const selectedProvince: Province | undefined = byNuts.get(selectedNuts);
-  const selectedOccupation: OccupationGroup | undefined =
-    byIsco.get(selectedIsco);
+  const selectedProvince: Province | undefined = selectedNuts
+    ? byNuts.get(selectedNuts)
+    : undefined;
+  const selectedOccupation: OccupationGroup | undefined = selectedIsco
+    ? byIsco.get(selectedIsco)
+    : undefined;
+  const bothSelected = Boolean(selectedProvince && selectedOccupation);
 
   // Combined personal risk: province exposure × occupation exposure × adoption × horizon.
-  const personalExposure = selectedProvince
-    ? (selectedProvince.exposure + (selectedOccupation?.exposure ?? 0)) / 2
-    : 0;
+  const personalExposure =
+    selectedProvince && selectedOccupation
+      ? (selectedProvince.exposure + selectedOccupation.exposure) / 2
+      : 0;
   const personalPressure = pressure(personalExposure, adoption, horizon);
 
   const countryAtRiskM = useMemo(() => {
@@ -119,7 +124,7 @@ export default function Tool({ features }: Props) {
             Adoption scenario
           </div>
           <div className="flex flex-wrap gap-2">
-            {(["slow", "central", "fast"] as const).map((s) => {
+            {(["slow", "current", "fast"] as const).map((s) => {
               const active = s === scenario;
               return (
                 <button
@@ -168,9 +173,31 @@ export default function Tool({ features }: Props) {
         </div>
       </div>
 
-      {/* Map + detail */}
-      <div className="mt-10 grid gap-6 md:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)]">
-        <div className="rounded-sm border border-white/10 bg-black/40 p-3">
+      {/* Step 1: Province */}
+      <div className="mt-14">
+        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+          <div>
+            <div className="text-xs uppercase tracking-[0.25em] text-accent">
+              Step 1
+            </div>
+            <h2 className="mt-1 text-xl font-semibold md:text-2xl">
+              Click your province on the map
+            </h2>
+          </div>
+          <SelectionBadge
+            label="Province"
+            value={selectedProvince?.name ?? null}
+            placeholder="none selected"
+          />
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-6 md:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)]">
+        <div
+          className={`rounded-sm border bg-black/40 p-3 transition ${
+            selectedProvince ? "border-white/10" : "border-accent/60"
+          }`}
+        >
           <svg
             viewBox={`0 0 ${W} ${H}`}
             role="img"
@@ -252,7 +279,11 @@ export default function Tool({ features }: Props) {
         </div>
 
         {/* Province detail */}
-        <aside className="rounded-sm border border-white/10 bg-black/40 p-6">
+        <aside
+          className={`rounded-sm border bg-black/40 p-6 transition ${
+            selectedProvince ? "border-white/10" : "border-dashed border-white/20"
+          }`}
+        >
           {selectedProvince ? (
             <>
               <div className="text-xs uppercase tracking-[0.25em] text-white/50">
@@ -318,26 +349,47 @@ export default function Tool({ features }: Props) {
               </dl>
             </>
           ) : (
-            <div className="text-white/60">Click a province on the map.</div>
+            <div className="flex h-full flex-col items-start justify-center gap-3">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/60 text-accent">
+                1
+              </div>
+              <div className="text-white/80">
+                Click one of the 11 provinces on the map to begin.
+              </div>
+              <div className="text-xs text-white/40">
+                Darker red = higher AI exposure.
+              </div>
+            </div>
           )}
         </aside>
       </div>
 
-      {/* Personal risk */}
+      {/* Step 2: Occupation */}
       <section
         id="my-risk"
-        className="mt-14 rounded-sm border border-white/10 bg-black/40 p-6 md:p-10"
+        className={`mt-14 rounded-sm border bg-black/40 p-6 md:p-10 transition ${
+          selectedOccupation ? "border-white/10" : "border-accent/60"
+        }`}
       >
-        <div className="mb-6 text-xs uppercase tracking-[0.25em] text-white/50">
-          My risk profile
+        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+          <div>
+            <div className="text-xs uppercase tracking-[0.25em] text-accent">
+              Step 2
+            </div>
+            <h2 className="mt-1 text-2xl font-semibold md:text-3xl">
+              Pick your occupation
+            </h2>
+          </div>
+          <SelectionBadge
+            label="Occupation"
+            value={selectedOccupation?.name ?? null}
+            placeholder="none selected"
+          />
         </div>
-        <h2 className="text-2xl font-semibold md:text-3xl">
-          Where do you fit?
-        </h2>
         <p className="mt-3 max-w-2xl text-white/60">
-          Pick your occupation family (ISCO-08 major group). The site
+          Choose your occupation family (ISCO-08 major group). The site
           combines its AIOE-derived score with the province score above
-          and the current scenario.
+          and the current scenario to produce your task-pressure estimate.
         </p>
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -376,29 +428,45 @@ export default function Tool({ features }: Props) {
         </div>
 
         {/* Result */}
-        <div className="mt-10 grid gap-6 border-t border-white/10 pt-8 md:grid-cols-3">
-          <ResultStat
-            label="Composite exposure"
-            value={personalExposure.toFixed(0)}
-            hint="avg. of province + occupation (0–100)"
-          />
-          <ResultStat
-            label="Task-pressure"
-            value={`${Math.round(personalPressure * 100)}%`}
-            hint="share of your task-basket plausibly substitutable"
-            accent
-          />
-          <ResultStat
-            label="Scenario"
-            value={
-              scenario === "slow"
-                ? "Slow"
-                : scenario === "fast"
-                  ? "Fast"
-                  : "Central"
-            }
-            hint={`${horizon}-year horizon`}
-          />
+        <div className="mt-10 border-t border-white/10 pt-8">
+          <div className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
+            Your estimate
+          </div>
+          {bothSelected ? (
+            <div className="grid gap-6 md:grid-cols-3">
+              <ResultStat
+                label="Composite exposure"
+                value={personalExposure.toFixed(0)}
+                hint="avg. of province + occupation (0–100)"
+              />
+              <ResultStat
+                label="Task-pressure"
+                value={`${Math.round(personalPressure * 100)}%`}
+                hint="share of your task-basket plausibly substitutable"
+                accent
+              />
+              <ResultStat
+                label="Scenario"
+                value={
+                  scenario === "slow"
+                    ? "Slow"
+                    : scenario === "fast"
+                      ? "Fast"
+                      : "Current"
+                }
+                hint={`${horizon}-year horizon`}
+              />
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-3 text-sm">
+              <StepPrompt done={Boolean(selectedProvince)} n={1}>
+                Select a province on the map above
+              </StepPrompt>
+              <StepPrompt done={Boolean(selectedOccupation)} n={2}>
+                Select an occupation here
+              </StepPrompt>
+            </div>
+          )}
         </div>
 
         <p className="mt-6 max-w-2xl text-xs text-white/40">
@@ -408,6 +476,63 @@ export default function Tool({ features }: Props) {
           adoption level and horizon.
         </p>
       </section>
+    </div>
+  );
+}
+
+function SelectionBadge({
+  label,
+  value,
+  placeholder,
+}: {
+  label: string;
+  value: string | null;
+  placeholder: string;
+}) {
+  const empty = !value;
+  return (
+    <div
+      className={`rounded-sm border px-3 py-1.5 text-xs ${
+        empty
+          ? "border-accent/60 bg-accent/10 text-accent"
+          : "border-white/20 bg-white/5 text-white"
+      }`}
+    >
+      <span className="uppercase tracking-[0.25em] opacity-70">
+        {label}:
+      </span>{" "}
+      <span className="font-medium">{value ?? placeholder}</span>
+    </div>
+  );
+}
+
+function StepPrompt({
+  n,
+  done,
+  children,
+}: {
+  n: number;
+  done: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={`inline-flex items-center gap-2 rounded-sm border px-3 py-2 ${
+        done
+          ? "border-white/15 text-white/50 line-through"
+          : "border-accent/60 bg-accent/10 text-accent"
+      }`}
+    >
+      <span
+        className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] ${
+          done
+            ? "bg-white/10 text-white/60"
+            : "bg-accent text-ink"
+        }`}
+      >
+        {n}
+      </span>
+      {children}
     </div>
   );
 }
