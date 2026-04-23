@@ -9,8 +9,8 @@ export default function Page() {
   return (
     <main>
       <Hero />
-      <LayoffsStrip />
       <BelgiumMap />
+      <LayoffsStrip />
       <OccupationsTable />
       <Narrative />
       <Footer />
