@@ -39,12 +39,6 @@ export default function Hero() {
             href="/tool"
             className="inline-flex items-center rounded-sm border border-accent bg-accent/10 px-4 py-2 text-sm font-medium text-accent hover:bg-accent hover:text-ink"
           >
-            Enter the tool →
-          </Link>
-          <Link
-            href="/tool#my-risk"
-            className="inline-flex items-center rounded-sm border border-white/15 px-4 py-2 text-sm text-white/70 hover:border-white/40 hover:text-white"
-          >
             Check my risk →
           </Link>
         </div>

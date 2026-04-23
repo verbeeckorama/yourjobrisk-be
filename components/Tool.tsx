@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   provinces,
   occupations,
@@ -49,6 +49,31 @@ export default function Tool({ features }: Props) {
   const [horizon, setHorizon] = useState<number>(10);
   const [selectedNuts, setSelectedNuts] = useState<string | null>(null);
   const [selectedIsco, setSelectedIsco] = useState<string | null>(null);
+  const step2Ref = useRef<HTMLElement | null>(null);
+
+  // Always start at the top; ignore any inbound hash like #my-risk.
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname);
+      }
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, []);
+
+  const handleSelectProvince = (nuts: string) => {
+    const first = selectedNuts === null;
+    setSelectedNuts(nuts);
+    if (first) {
+      // Give React a tick to render Step 2, then scroll to it.
+      setTimeout(() => {
+        step2Ref.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 60);
+    }
+  };
 
   const adoption = scenario === "slow" ? 0.25 : scenario === "fast" ? 0.65 : 0.4;
 
@@ -219,7 +244,7 @@ export default function Tool({ features }: Props) {
                   strokeWidth={isSelected ? 2 : 0.6}
                   strokeLinejoin="round"
                   className="cursor-pointer transition-[stroke,filter] hover:brightness-125"
-                  onClick={() => setSelectedNuts(f.properties.id)}
+                  onClick={() => handleSelectProvince(f.properties.id)}
                 >
                   <title>
                     {p
@@ -367,8 +392,14 @@ export default function Tool({ features }: Props) {
       {/* Step 2: Occupation */}
       <section
         id="my-risk"
+        ref={step2Ref}
+        aria-disabled={selectedProvince ? "false" : "true"}
         className={`mt-14 rounded-sm border bg-black/40 p-6 md:p-10 transition ${
-          selectedOccupation ? "border-white/10" : "border-accent/60"
+          !selectedProvince
+            ? "pointer-events-none border-white/10 opacity-50"
+            : selectedOccupation
+              ? "border-white/10"
+              : "border-accent/60"
         }`}
       >
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
