@@ -1015,7 +1015,7 @@ export default function JevonsContent() {
           </h2>
           <ul className="mt-10 grid gap-x-10 gap-y-3 font-mono text-sm text-white/70 md:grid-cols-2">
             <li>
-              <SourceLink href="https://www.gutenberg.org/ebooks/8800">
+              <SourceLink href="https://archive.org/details/coalquestionani00jevogoog">
                 Jevons (1865) — The Coal Question
               </SourceLink>
             </li>
