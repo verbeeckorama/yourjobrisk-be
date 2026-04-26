@@ -281,9 +281,37 @@ export const t = {
   toolAdoption: { en: "Adoption scenario", nl: "Adoptiescenario", fr: "Scénario d'adoption" } as T,
   toolHorizon: { en: "Horizon", nl: "Horizon", fr: "Horizon" } as T,
   toolYears: { en: "years", nl: "jaar", fr: "ans" } as T,
+  toolStepScenarioTitle: { en: "Step 1", nl: "Stap 1", fr: "Étape 1" } as T,
   toolStep1: { en: "Step 1 · Pick your province", nl: "Stap 1 · Kies je provincie", fr: "Étape 1 · Choisissez votre province" } as T,
   toolStep2: { en: "Step 2 · Pick your occupation", nl: "Stap 2 · Kies je beroep", fr: "Étape 2 · Choisissez votre métier" } as T,
   toolStep3: { en: "Step 3 · The number", nl: "Stap 3 · Het cijfer", fr: "Étape 3 · Le chiffre" } as T,
+  toolWizardScenarioHeadline: {
+    en: "Set the scenario first",
+    nl: "Kies eerst het scenario",
+    fr: "Commencez par le scénario",
+  } as T,
+  toolWizardScenarioHelp: {
+    en: "Choose the adoption speed and time horizon. The next steps use this scenario to calculate province and occupation pressure.",
+    nl: "Kies de adoptiesnelheid en de tijdshorizon. De volgende stappen gebruiken dit scenario om de druk per provincie en beroep te berekenen.",
+    fr: "Choisissez la vitesse d'adoption et l'horizon. Les étapes suivantes utilisent ce scénario pour calculer l'exposition par province et par métier.",
+  } as T,
+  toolWizardNationalPreview: {
+    en: "National preview",
+    nl: "Nationale preview",
+    fr: "Aperçu national",
+  } as T,
+  toolWizardBack: { en: "Back", nl: "Terug", fr: "Retour" } as T,
+  toolWizardNext: { en: "Next", nl: "Volgende", fr: "Suivant" } as T,
+  toolWizardShowEstimate: {
+    en: "Show estimate",
+    nl: "Toon schatting",
+    fr: "Voir l'estimation",
+  } as T,
+  toolWizardChangeScenario: {
+    en: "Change scenario",
+    nl: "Scenario aanpassen",
+    fr: "Modifier le scénario",
+  } as T,
   toolScenarioSlow: {
     en: "Slow: AI tooling stays in pilots",
     nl: "Traag: AI blijft in pilots steken",
@@ -448,14 +476,19 @@ export const t = {
     fr: "L'exposition des tâches n'est pas la probabilité de perdre votre emploi. C'est une mesure indicative de la part de ce que vous faites aujourd'hui qui pourrait être réalisée, en tout ou en partie, par les systèmes d'IA actuels au niveau d'adoption et à l'horizon choisis.",
   } as T,
   toolStepProvinceTitle: {
-    en: "Step 1",
-    nl: "Stap 1",
-    fr: "Étape 1",
-  } as T,
-  toolStepOccupationTitle: {
     en: "Step 2",
     nl: "Stap 2",
     fr: "Étape 2",
+  } as T,
+  toolStepOccupationTitle: {
+    en: "Step 3",
+    nl: "Stap 3",
+    fr: "Étape 3",
+  } as T,
+  toolStepResultTitle: {
+    en: "Step 4",
+    nl: "Stap 4",
+    fr: "Étape 4",
   } as T,
   toolMapAria: {
     en: "Interactive map of Belgian provinces",
@@ -562,6 +595,7 @@ export const provinceNoteI18n: Record<string, T> = {
 };
 
 export const occupationNameI18n: Record<string, T> = {
+  "0": { en: "Armed forces", nl: "Krijgsmacht", fr: "Forces armées" },
   "1": { en: "Managers", nl: "Leidinggevenden", fr: "Cadres dirigeants" },
   "2": { en: "Professionals", nl: "Kenniswerkers", fr: "Professions intellectuelles" },
   "3": {
@@ -602,6 +636,11 @@ export const occupationNameI18n: Record<string, T> = {
 };
 
 export const occupationExamplesI18n: Record<string, T> = {
+  "0": {
+    en: "Military personnel",
+    nl: "Militair personeel",
+    fr: "Personnel militaire",
+  },
   "1": {
     en: "Corporate, administrative and production managers",
     nl: "Bedrijfs-, administratieve en productiemanagers",

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   provinces,
   occupations,
@@ -27,6 +27,7 @@ import {
 } from "@/lib/i18n";
 
 type Props = { features: FeatureCollection };
+type WizardStep = 0 | 1 | 2 | 3;
 
 const W = 720;
 const H = 520;
@@ -87,7 +88,7 @@ export default function Tool({ features }: Props) {
   const [horizon, setHorizon] = useState<number>(10);
   const [selectedNuts, setSelectedNuts] = useState<string | null>(null);
   const [selectedIsco, setSelectedIsco] = useState<string | null>(null);
-  const step2Ref = useRef<HTMLElement | null>(null);
+  const [wizardStep, setWizardStep] = useState<WizardStep>(0);
 
   // Always start at the top; ignore any inbound hash like #my-risk.
   useEffect(() => {
@@ -100,17 +101,7 @@ export default function Tool({ features }: Props) {
   }, []);
 
   const handleSelectProvince = (nuts: string) => {
-    const first = selectedNuts === null;
     setSelectedNuts(nuts);
-    if (first) {
-      // Give React a tick to render Step 2, then scroll to it.
-      setTimeout(() => {
-        step2Ref.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 60);
-    }
   };
 
   const adoption = scenario === "slow" ? 0.25 : scenario === "fast" ? 0.65 : 0.4;
@@ -180,6 +171,27 @@ export default function Tool({ features }: Props) {
     return +(avgPressure * totalWorkersMillions).toFixed(2);
   }, [adoption, horizon]);
 
+  const wizardSteps = [
+    {
+      label: tr(t.toolAdoption, lang),
+      complete: true,
+    },
+    {
+      label: tr(t.toolProvinceLabel, lang),
+      complete: Boolean(selectedProvince),
+    },
+    {
+      label: tr(t.toolOccupationLabel, lang),
+      complete: Boolean(selectedOccupation),
+    },
+    {
+      label: tr(t.toolYourEstimate, lang),
+      complete: bothSelected,
+    },
+  ];
+
+  const goToStep = (step: WizardStep) => setWizardStep(step);
+
   return (
     <div className="mx-auto max-w-6xl px-6 pt-10 pb-24 md:pt-16">
       <header className="max-w-3xl">
@@ -194,334 +206,342 @@ export default function Tool({ features }: Props) {
         </p>
       </header>
 
-      {/* Controls */}
-      <div className="mt-10 grid gap-6 rounded-sm border border-white/10 bg-black/40 p-6 md:grid-cols-[1fr,auto]">
-        <div>
-          <div className="mb-3 text-xs uppercase tracking-[0.25em] text-white/50">
-            {tr(t.toolAdoption, lang)}
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {(["slow", "current", "fast"] as const).map((s) => {
-              const active = s === scenario;
-              return (
-                <button
-                  key={s}
-                  onClick={() => setScenario(s)}
-                  className={`rounded-sm border px-3 py-1.5 text-sm transition ${
-                    active
-                      ? "border-accent bg-accent/10 text-accent"
-                      : "border-white/15 text-white/60 hover:border-white/40 hover:text-white"
-                  }`}
-                >
-                  {factorLabels[s]}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-        <div className="md:min-w-[240px]">
-          <div className="mb-3 flex items-baseline justify-between text-xs uppercase tracking-[0.25em] text-white/50">
-            <span>{tr(t.toolHorizon, lang)}</span>
-            <span className="numeric text-white">
-              {horizon} {tr(t.toolYears, lang)}
-            </span>
-          </div>
-          <input
-            aria-label={`${tr(t.toolHorizon, lang)}: ${horizon} ${tr(t.toolYears, lang)}`}
-            title={tr(t.toolHorizon, lang)}
-            type="range"
-            min={1}
-            max={15}
-            step={1}
-            value={horizon}
-            onChange={(e) => setHorizon(Number(e.target.value))}
-            className="w-full accent-[#ff4133]"
-          />
-        </div>
-
-        <div className="md:col-span-2 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-white/10 pt-5 text-sm">
-          <div>
-            <span className="numeric text-2xl text-accent">
-              {countryAtRiskM.toFixed(1)}M
-            </span>
-            <span className="ml-2 text-white/60">
-              {tr(t.toolWorkersUnderPressure, lang)}
-            </span>
-          </div>
-          <div className="text-xs text-white/40">
-            {tr(t.toolFormula, lang)}
-          </div>
-        </div>
-      </div>
-
-      {/* Step 1: Province */}
-      <div className="mt-14">
-        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
-          <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-accent">
-              {tr(t.toolStepProvinceTitle, lang)}
-            </div>
-            <h2 className="mt-1 text-xl font-semibold md:text-2xl">
-              {tr(t.toolPickProvinceMap, lang)}
-            </h2>
-          </div>
-          <SelectionBadge
-            label={tr(t.toolProvinceLabel, lang)}
-            value={
-              selectedProvince
-                ? provName(selectedProvince.nuts, selectedProvince.name)
-                : null
-            }
-            placeholder={tr(t.toolNoneSelected, lang)}
-          />
-        </div>
-      </div>
-
-      <div className="mt-4 grid gap-6 md:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)]">
-        <div
-          className={`rounded-sm border bg-black/40 p-3 transition ${
-            selectedProvince ? "border-white/10" : "border-accent/60"
-          }`}
-        >
-          <svg
-            viewBox={`0 0 ${W} ${H}`}
-            role="img"
-            aria-label={tr(t.toolMapAria, lang)}
-            className="h-auto w-full"
-          >
-            {features.features.map((f) => {
-              const p = byNuts.get(f.properties.id);
-              const fill = p ? colorForExposure(p.exposure) : "#222";
-              const isSelected = f.properties.id === selectedNuts;
-              return (
-                <path
-                  key={f.properties.id}
-                  d={featurePath(f, proj)}
-                  fill={fill}
-                  stroke={
-                    isSelected ? "#ffffff" : "rgba(255,255,255,0.35)"
-                  }
-                  strokeWidth={isSelected ? 2 : 0.6}
-                  strokeLinejoin="round"
-                  className="cursor-pointer transition-[stroke,filter] hover:brightness-125"
-                  onClick={() => handleSelectProvince(f.properties.id)}
-                >
-                  <title>
-                    {p
-                      ? `${provName(p.nuts, p.name)} — ${tr(t.toolClickInspect, lang)}`
-                      : f.properties.na}
-                  </title>
-                </path>
-              );
-            })}
-            {features.features.map((f) => {
-              const p = byNuts.get(f.properties.id);
-              if (!p) return null;
-              const [lng, lat] = featureCentroid(f);
-              const [x, y] = proj(lng, lat);
-              const dy = p.code === "BRU" ? -6 : 0;
-              return (
-                <g
-                  key={`lbl-${p.code}`}
-                  transform={`translate(${x}, ${y + dy})`}
-                  className="pointer-events-none"
-                >
-                  <text
-                    textAnchor="middle"
-                    fill="white"
-                    fontSize={10}
-                    fontWeight={600}
-                    stroke="rgba(0,0,0,0.6)"
-                    strokeWidth={2}
-                    paintOrder="stroke"
-                  >
-                    {p.shortLabel}
-                  </text>
-                  <text
-                    textAnchor="middle"
-                    y={11}
-                    className="numeric"
-                    fill="rgba(255,255,255,0.9)"
-                    fontSize={10}
-                  >
-                    {p.exposure}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
-          <div className="mt-3 flex items-center gap-3 text-xs text-white/50">
-            <span>{tr(t.geoLower, lang)}</span>
-            <div className="exposure-gradient h-2 flex-1 rounded-sm" />
-            <span>{tr(t.toolHigher, lang)}</span>
-          </div>
-        </div>
-
-        {/* Province detail */}
-        <aside
-          className={`rounded-sm border bg-black/40 p-6 transition ${
-            selectedProvince ? "border-white/10" : "border-dashed border-white/20"
-          }`}
-        >
-          {selectedProvince ? (
-            <>
-              <div className="text-xs uppercase tracking-[0.25em] text-white/50">
-                {tr(t.toolSelectedProvince, lang)}
-              </div>
-              <div className="mt-1 flex items-baseline justify-between">
-                <h2 className="text-2xl font-semibold">
-                  {provName(selectedProvince.nuts, selectedProvince.name)}
-                </h2>
-                <span
-                  className={`numeric rounded-sm px-2 py-0.5 text-sm font-semibold ${exposureBadgeClass(
-                    selectedProvince.exposure
-                  )}`}
-                >
-                  {selectedProvince.exposure}
-                </span>
-              </div>
-              <p className="mt-3 text-sm text-white/70">
-                {provinceNoteI18n[selectedProvince.nuts]
-                  ? tr(provinceNoteI18n[selectedProvince.nuts], lang)
-                  : selectedProvince.note}
-              </p>
-
-              <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-white/40">
-                    {tr(t.toolWorkers, lang)}
-                  </dt>
-                  <dd className="numeric mt-1 text-lg text-white">
-                    {selectedProvince.workers.toLocaleString(numFmt)}k
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-white/40">
-                    {tr(t.toolUnderPressure, lang)}
-                  </dt>
-                  <dd className="numeric mt-1 text-lg text-accent">
-                    {Math.round(
-                      pressure(
-                        selectedProvince.exposure,
-                        adoption,
-                        horizon
-                      ) * selectedProvince.workers
-                    ).toLocaleString(numFmt)}
-                    k
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-white/40">
-                    {tr(t.toolRegion, lang)}
-                  </dt>
-                  <dd className="mt-1 text-white/80">
-                    {selectedProvince.region}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-white/40">
-                    {tr(t.toolNuts, lang)}
-                  </dt>
-                  <dd className="numeric mt-1 text-white/80">
-                    {selectedProvince.nuts}
-                  </dd>
-                </div>
-              </dl>
-            </>
-          ) : (
-            <div className="flex h-full flex-col items-start justify-center gap-3">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/60 text-accent">
-                1
-              </div>
-              <div className="text-white/80">
-                {tr(t.toolStartHint, lang)}
-              </div>
-              <div className="text-xs text-white/40">
-                {tr(t.toolDarkerRed, lang)}
-              </div>
-            </div>
-          )}
-        </aside>
-      </div>
-
-      {/* Step 2: Occupation */}
       <section
         id="my-risk"
-        ref={step2Ref}
-        data-disabled={selectedProvince ? "false" : "true"}
-        className={`mt-14 rounded-sm border bg-black/40 p-6 md:p-10 transition ${
-          !selectedProvince
-            ? "pointer-events-none border-white/10 opacity-50"
-            : selectedOccupation
-              ? "border-white/10"
-              : "border-accent/60"
-        }`}
+        className="mt-10 rounded-sm border border-white/10 bg-black/40 p-5 md:p-8"
       >
-        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
-          <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-accent">
-              {tr(t.toolStepOccupationTitle, lang)}
-            </div>
-            <h2 className="mt-1 text-2xl font-semibold md:text-3xl">
-              {tr(t.toolPickOccupationHeadline, lang)}
-            </h2>
-          </div>
-          <SelectionBadge
-            label={tr(t.toolOccupationLabel, lang)}
-            value={
-              selectedOccupation
-                ? occName(selectedOccupation.isco, selectedOccupation.name)
-                : null
-            }
-            placeholder={tr(t.toolNoneSelected, lang)}
-          />
-        </div>
-        <p className="mt-3 max-w-2xl text-white/60">
-          {tr(t.toolPickOccupationHelp, lang)}
-        </p>
+        <WizardProgress steps={wizardSteps} currentStep={wizardStep} />
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {[...occupations]
-            .sort((a, b) => b.exposure - a.exposure)
-            .map((o) => {
-              const active = o.isco === selectedIsco;
-              return (
-                <button
-                  key={o.isco}
-                  onClick={() => setSelectedIsco(o.isco)}
-                  className={`rounded-sm border p-3 text-left transition ${
-                    active
-                      ? "border-accent bg-accent/10"
-                      : "border-white/10 hover:border-white/40"
-                  }`}
+        {wizardStep === 0 ? (
+          <div className="mt-8 grid gap-8 md:grid-cols-[1fr,320px]">
+            <div>
+              <div className="text-xs uppercase tracking-[0.25em] text-accent">
+                {tr(t.toolStepScenarioTitle, lang)}
+              </div>
+              <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
+                {tr(t.toolWizardScenarioHeadline, lang)}
+              </h2>
+              <p className="mt-3 max-w-2xl text-white/60">
+                {tr(t.toolWizardScenarioHelp, lang)}
+              </p>
+
+              <div className="mt-8">
+                <div className="mb-3 text-xs uppercase tracking-[0.25em] text-white/50">
+                  {tr(t.toolAdoption, lang)}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {(["slow", "current", "fast"] as const).map((s) => {
+                    const active = s === scenario;
+                    return (
+                      <button
+                        key={s}
+                        onClick={() => setScenario(s)}
+                        className={`rounded-sm border px-3 py-2 text-sm transition ${
+                          active
+                            ? "border-accent bg-accent/10 text-accent"
+                            : "border-white/15 text-white/60 hover:border-white/40 hover:text-white"
+                        }`}
+                      >
+                        {factorLabels[s]}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="mt-8 max-w-md">
+                <div className="mb-3 flex items-baseline justify-between text-xs uppercase tracking-[0.25em] text-white/50">
+                  <span>{tr(t.toolHorizon, lang)}</span>
+                  <span className="numeric text-white">
+                    {horizon} {tr(t.toolYears, lang)}
+                  </span>
+                </div>
+                <input
+                  aria-label={`${tr(t.toolHorizon, lang)}: ${horizon} ${tr(t.toolYears, lang)}`}
+                  title={tr(t.toolHorizon, lang)}
+                  type="range"
+                  min={1}
+                  max={15}
+                  step={1}
+                  value={horizon}
+                  onChange={(e) => setHorizon(Number(e.target.value))}
+                  className="w-full accent-[#ff4133]"
+                />
+              </div>
+            </div>
+
+            <aside className="rounded-sm border border-white/10 bg-white/[0.03] p-5">
+              <div className="text-xs uppercase tracking-[0.25em] text-white/40">
+                {tr(t.toolWizardNationalPreview, lang)}
+              </div>
+              <div className="numeric mt-3 text-4xl font-semibold text-accent">
+                {countryAtRiskM.toFixed(1)}M
+              </div>
+              <p className="mt-2 text-sm text-white/60">
+                {tr(t.toolWorkersUnderPressure, lang)}
+              </p>
+              <p className="mt-5 text-xs text-white/40">
+                {tr(t.toolFormula, lang)}
+              </p>
+            </aside>
+          </div>
+        ) : null}
+
+        {wizardStep === 1 ? (
+          <div className="mt-8">
+            <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+              <div>
+                <div className="text-xs uppercase tracking-[0.25em] text-accent">
+                  {tr(t.toolStepProvinceTitle, lang)}
+                </div>
+                <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
+                  {tr(t.toolPickProvinceMap, lang)}
+                </h2>
+              </div>
+              <SelectionBadge
+                label={tr(t.toolProvinceLabel, lang)}
+                value={
+                  selectedProvince
+                    ? provName(selectedProvince.nuts, selectedProvince.name)
+                    : null
+                }
+                placeholder={tr(t.toolNoneSelected, lang)}
+              />
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)]">
+              <div className="rounded-sm border border-white/10 bg-white/[0.03] p-3">
+                <svg
+                  viewBox={`0 0 ${W} ${H}`}
+                  role="img"
+                  aria-label={tr(t.toolMapAria, lang)}
+                  className="h-auto w-full"
                 >
-                  <div className="flex items-baseline justify-between">
-                    <span
-                      className={`text-sm font-medium ${
-                        active ? "text-accent" : "text-white"
+                  {features.features.map((f) => {
+                    const p = byNuts.get(f.properties.id);
+                    const fill = p ? colorForExposure(p.exposure) : "#222";
+                    const isSelected = f.properties.id === selectedNuts;
+                    return (
+                      <path
+                        key={f.properties.id}
+                        d={featurePath(f, proj)}
+                        fill={fill}
+                        stroke={
+                          isSelected ? "#ffffff" : "rgba(255,255,255,0.35)"
+                        }
+                        strokeWidth={isSelected ? 2 : 0.6}
+                        strokeLinejoin="round"
+                        className="cursor-pointer transition-[stroke,filter] hover:brightness-125"
+                        onClick={() => handleSelectProvince(f.properties.id)}
+                      >
+                        <title>
+                          {p
+                            ? `${provName(p.nuts, p.name)} — ${tr(t.toolClickInspect, lang)}`
+                            : f.properties.na}
+                        </title>
+                      </path>
+                    );
+                  })}
+                  {features.features.map((f) => {
+                    const p = byNuts.get(f.properties.id);
+                    if (!p) return null;
+                    const [lng, lat] = featureCentroid(f);
+                    const [x, y] = proj(lng, lat);
+                    const dy = p.code === "BRU" ? -6 : 0;
+                    return (
+                      <g
+                        key={`lbl-${p.code}`}
+                        transform={`translate(${x}, ${y + dy})`}
+                        className="pointer-events-none"
+                      >
+                        <text
+                          textAnchor="middle"
+                          fill="white"
+                          fontSize={10}
+                          fontWeight={600}
+                          stroke="rgba(0,0,0,0.6)"
+                          strokeWidth={2}
+                          paintOrder="stroke"
+                        >
+                          {p.shortLabel}
+                        </text>
+                        <text
+                          textAnchor="middle"
+                          y={11}
+                          className="numeric"
+                          fill="rgba(255,255,255,0.9)"
+                          fontSize={10}
+                        >
+                          {p.exposure}
+                        </text>
+                      </g>
+                    );
+                  })}
+                </svg>
+                <div className="mt-3 flex items-center gap-3 text-xs text-white/50">
+                  <span>{tr(t.geoLower, lang)}</span>
+                  <div className="exposure-gradient h-2 flex-1 rounded-sm" />
+                  <span>{tr(t.toolHigher, lang)}</span>
+                </div>
+              </div>
+
+              <aside
+                className={`rounded-sm border bg-white/[0.03] p-6 transition ${
+                  selectedProvince
+                    ? "border-white/10"
+                    : "border-dashed border-white/20"
+                }`}
+              >
+                {selectedProvince ? (
+                  <>
+                    <div className="text-xs uppercase tracking-[0.25em] text-white/50">
+                      {tr(t.toolSelectedProvince, lang)}
+                    </div>
+                    <div className="mt-1 flex items-baseline justify-between gap-3">
+                      <h2 className="text-2xl font-semibold">
+                        {provName(selectedProvince.nuts, selectedProvince.name)}
+                      </h2>
+                      <span
+                        className={`numeric rounded-sm px-2 py-0.5 text-sm font-semibold ${exposureBadgeClass(
+                          selectedProvince.exposure
+                        )}`}
+                      >
+                        {selectedProvince.exposure}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-sm text-white/70">
+                      {provinceNoteI18n[selectedProvince.nuts]
+                        ? tr(provinceNoteI18n[selectedProvince.nuts], lang)
+                        : selectedProvince.note}
+                    </p>
+
+                    <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <dt className="text-xs uppercase tracking-widest text-white/40">
+                          {tr(t.toolWorkers, lang)}
+                        </dt>
+                        <dd className="numeric mt-1 text-lg text-white">
+                          {selectedProvince.workers.toLocaleString(numFmt)}k
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs uppercase tracking-widest text-white/40">
+                          {tr(t.toolUnderPressure, lang)}
+                        </dt>
+                        <dd className="numeric mt-1 text-lg text-accent">
+                          {Math.round(
+                            pressure(
+                              selectedProvince.exposure,
+                              adoption,
+                              horizon
+                            ) * selectedProvince.workers
+                          ).toLocaleString(numFmt)}
+                          k
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs uppercase tracking-widest text-white/40">
+                          {tr(t.toolRegion, lang)}
+                        </dt>
+                        <dd className="mt-1 text-white/80">
+                          {selectedProvince.region}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs uppercase tracking-widest text-white/40">
+                          {tr(t.toolNuts, lang)}
+                        </dt>
+                        <dd className="numeric mt-1 text-white/80">
+                          {selectedProvince.nuts}
+                        </dd>
+                      </div>
+                    </dl>
+                  </>
+                ) : (
+                  <div className="flex h-full flex-col items-start justify-center gap-3">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/60 text-accent">
+                      2
+                    </div>
+                    <div className="text-white/80">{tr(t.toolStartHint, lang)}</div>
+                    <div className="text-xs text-white/40">
+                      {tr(t.toolDarkerRed, lang)}
+                    </div>
+                  </div>
+                )}
+              </aside>
+            </div>
+          </div>
+        ) : null}
+
+        {wizardStep === 2 ? (
+          <div className="mt-8">
+            <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+              <div>
+                <div className="text-xs uppercase tracking-[0.25em] text-accent">
+                  {tr(t.toolStepOccupationTitle, lang)}
+                </div>
+                <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
+                  {tr(t.toolPickOccupationHeadline, lang)}
+                </h2>
+              </div>
+              <SelectionBadge
+                label={tr(t.toolOccupationLabel, lang)}
+                value={
+                  selectedOccupation
+                    ? occName(selectedOccupation.isco, selectedOccupation.name)
+                    : null
+                }
+                placeholder={tr(t.toolNoneSelected, lang)}
+              />
+            </div>
+            <p className="mt-3 max-w-2xl text-white/60">
+              {tr(t.toolPickOccupationHelp, lang)}
+            </p>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+              {[...occupations]
+                .sort((a, b) => b.exposure - a.exposure)
+                .map((o) => {
+                  const active = o.isco === selectedIsco;
+                  return (
+                    <button
+                      key={o.isco}
+                      onClick={() => setSelectedIsco(o.isco)}
+                      className={`rounded-sm border p-3 text-left transition ${
+                        active
+                          ? "border-accent bg-accent/10"
+                          : "border-white/10 hover:border-white/40"
                       }`}
                     >
-                      {occName(o.isco, o.name)}
-                    </span>
-                    <span className="numeric text-sm text-white/60">
-                      {o.exposure}
-                    </span>
-                  </div>
-                  <div className="mt-1 text-xs text-white/40 line-clamp-1">
-                    {occExamples(o.isco, o.examples)}
-                  </div>
-                </button>
-              );
-            })}
-        </div>
-
-        {/* Result */}
-        <div className="mt-10 border-t border-white/10 pt-8">
-          <div className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
-            {tr(t.toolYourEstimate, lang)}
+                      <div className="flex items-baseline justify-between gap-3">
+                        <span
+                          className={`text-sm font-medium ${
+                            active ? "text-accent" : "text-white"
+                          }`}
+                        >
+                          {occName(o.isco, o.name)}
+                        </span>
+                        <span className="numeric text-sm text-white/60">
+                          {o.exposure}
+                        </span>
+                      </div>
+                      <div className="mt-1 text-xs text-white/40 line-clamp-1">
+                        {occExamples(o.isco, o.examples)}
+                      </div>
+                    </button>
+                  );
+                })}
+            </div>
           </div>
-          {bothSelected ? (
-            <>
+        ) : null}
+
+        {wizardStep === 3 ? (
+          <div className="mt-8">
+            <div className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
+              {tr(t.toolYourEstimate, lang)}
+            </div>
+            {bothSelected ? (
+              <>
               <div className="grid gap-6 md:grid-cols-3">
                 <ResultStat
                   label={tr(t.toolCompositeExposure, lang)}
@@ -603,17 +623,58 @@ export default function Tool({ features }: Props) {
                 </div>
                 <p>{tr(t.toolLimitsBody, lang)}</p>
               </div>
-            </>
-          ) : (
-            <div className="flex flex-wrap gap-3 text-sm">
-              <StepPrompt done={Boolean(selectedProvince)} n={1}>
-                {tr(t.toolStepSelectProvince, lang)}
-              </StepPrompt>
-              <StepPrompt done={Boolean(selectedOccupation)} n={2}>
-                {tr(t.toolStepSelectOccupation, lang)}
-              </StepPrompt>
-            </div>
-          )}
+              </>
+            ) : (
+              <div className="flex flex-wrap gap-3 text-sm">
+                <StepPrompt done={Boolean(selectedProvince)} n={2}>
+                  {tr(t.toolStepSelectProvince, lang)}
+                </StepPrompt>
+                <StepPrompt done={Boolean(selectedOccupation)} n={3}>
+                  {tr(t.toolStepSelectOccupation, lang)}
+                </StepPrompt>
+              </div>
+            )}
+          </div>
+        ) : null}
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
+          <button
+            type="button"
+            onClick={() => goToStep(Math.max(0, wizardStep - 1) as WizardStep)}
+            disabled={wizardStep === 0}
+            className="rounded-sm border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:border-white/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-35"
+          >
+            {tr(t.toolWizardBack, lang)}
+          </button>
+
+          <div className="flex flex-wrap gap-2">
+            {wizardStep === 3 ? (
+              <button
+                type="button"
+                onClick={() => goToStep(0)}
+                className="rounded-sm border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:border-white/40 hover:text-white"
+              >
+                {tr(t.toolWizardChangeScenario, lang)}
+              </button>
+            ) : null}
+            {wizardStep < 3 ? (
+              <button
+                type="button"
+                onClick={() =>
+                  goToStep(Math.min(3, wizardStep + 1) as WizardStep)
+                }
+                disabled={
+                  (wizardStep === 1 && !selectedProvince) ||
+                  (wizardStep === 2 && !selectedOccupation)
+                }
+                className="rounded-sm border border-accent bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-ink disabled:cursor-not-allowed disabled:border-white/15 disabled:bg-white/5 disabled:text-white/35"
+              >
+                {wizardStep === 2
+                  ? tr(t.toolWizardShowEstimate, lang)
+                  : tr(t.toolWizardNext, lang)}
+              </button>
+            ) : null}
+          </div>
         </div>
 
         <p className="mt-6 max-w-2xl text-xs text-white/40">
@@ -641,6 +702,50 @@ function BreakdownItem({
       <div className="numeric mt-1 text-base text-white">{value}</div>
       {hint ? <div className="mt-1 text-xs text-white/40">{hint}</div> : null}
     </div>
+  );
+}
+
+function WizardProgress({
+  steps,
+  currentStep,
+}: {
+  steps: { label: string; complete: boolean }[];
+  currentStep: number;
+}) {
+  return (
+    <ol className="grid gap-2 sm:grid-cols-4">
+      {steps.map((step, index) => {
+        const active = index === currentStep;
+        const done = step.complete && index < currentStep;
+        return (
+          <li
+            key={`${step.label}-${index}`}
+            className={`rounded-sm border px-3 py-2 text-xs transition ${
+              active
+                ? "border-accent bg-accent/10 text-accent"
+                : done
+                  ? "border-white/20 bg-white/5 text-white"
+                  : "border-white/10 text-white/45"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <span
+                className={`numeric inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] ${
+                  active
+                    ? "bg-accent text-ink"
+                    : done
+                      ? "bg-white/15 text-white"
+                      : "bg-white/5 text-white/50"
+                }`}
+              >
+                {index + 1}
+              </span>
+              <span className="font-medium">{step.label}</span>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
 
