@@ -1,30 +1,37 @@
-import { layoffs, type AiFactor } from "@/lib/data";
+"use client";
 
-const factorMeta: Record<
-  AiFactor,
-  { short: string; long: string; dot: string; pill: string }
-> = {
-  high: {
-    short: "AI likely",
-    long: "AI a likely factor",
-    dot: "bg-accent",
-    pill: "border-accent/40 bg-accent/10 text-accent",
-  },
-  medium: {
-    short: "AI plausible",
-    long: "AI plausibly a factor",
-    dot: "bg-amber-400",
-    pill: "border-amber-400/40 bg-amber-400/10 text-amber-300",
-  },
-  low: {
-    short: "Non-AI",
-    long: "Mostly market / geopolitical",
-    dot: "bg-white/30",
-    pill: "border-white/15 bg-white/5 text-white/50",
-  },
-};
+import { layoffs, type AiFactor } from "@/lib/data";
+import { useLang, tr } from "@/components/LanguageProvider";
+import { t } from "@/lib/i18n";
 
 export default function LayoffsStrip() {
+  const lang = useLang();
+  const numFmt = lang === "fr" ? "fr-BE" : lang === "nl" ? "nl-BE" : "en-BE";
+
+  const factorMeta: Record<
+    AiFactor,
+    { short: string; long: string; dot: string; pill: string }
+  > = {
+    high: {
+      short: tr(t.loFactorHighShort, lang),
+      long: tr(t.loFactorHighLong, lang),
+      dot: "bg-accent",
+      pill: "border-accent/40 bg-accent/10 text-accent",
+    },
+    medium: {
+      short: tr(t.loFactorMediumShort, lang),
+      long: tr(t.loFactorMediumLong, lang),
+      dot: "bg-amber-400",
+      pill: "border-amber-400/40 bg-amber-400/10 text-amber-300",
+    },
+    low: {
+      short: tr(t.loFactorLowShort, lang),
+      long: tr(t.loFactorLowLong, lang),
+      dot: "bg-white/30",
+      pill: "border-white/15 bg-white/5 text-white/50",
+    },
+  };
+
   const sorted = [...layoffs].sort(
     (a, b) => b.when.localeCompare(a.when) || b.roles - a.roles
   );
@@ -46,16 +53,13 @@ export default function LayoffsStrip() {
     <section className="border-b border-white/10 bg-black">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
-          Section 03 · What already happened
+          {tr(t.loEyebrow, lang)}
         </p>
         <h2 className="max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-          Belgium&apos;s last 24 months of restructuring.
+          {tr(t.loHeadline, lang)}
         </h2>
         <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
-          Not every announcement below is an AI story — many are driven by
-          energy prices, demand shocks, regulation or geopolitics. Each row
-          is tagged with how plausibly AI or automation is a driver, so you
-          can see the signal inside the noise.
+          {tr(t.loIntro, lang)}
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
@@ -65,27 +69,27 @@ export default function LayoffsStrip() {
               className="rounded-sm border border-white/10 px-4 py-2"
             >
               <span className="numeric mr-2 text-white">
-                {total.toLocaleString("en-BE")}
+                {total.toLocaleString(numFmt)}
               </span>
               <span className="text-xs uppercase tracking-widest text-white/50">
-                announced in {year}
+                {tr(t.loAnnouncedIn, lang)} {year}
               </span>
             </div>
           ))}
           <div className="rounded-sm border border-accent/40 bg-accent/10 px-4 py-2">
             <span className="numeric mr-2 text-accent">
-              {aiHigh.toLocaleString("en-BE")}
+              {aiHigh.toLocaleString(numFmt)}
             </span>
             <span className="text-xs uppercase tracking-widest text-accent/80">
-              AI likely a factor
+              {tr(t.loAiLikely, lang)}
             </span>
           </div>
           <div className="rounded-sm border border-amber-400/40 bg-amber-400/10 px-4 py-2">
             <span className="numeric mr-2 text-amber-300">
-              {aiMedium.toLocaleString("en-BE")}
+              {aiMedium.toLocaleString(numFmt)}
             </span>
             <span className="text-xs uppercase tracking-widest text-amber-300/80">
-              AI plausibly a factor
+              {tr(t.loAiPlausible, lang)}
             </span>
           </div>
         </div>
@@ -117,7 +121,7 @@ export default function LayoffsStrip() {
                     muted ? "text-white/50" : "text-accent"
                   }`}
                 >
-                  {l.roles.toLocaleString("en-BE")}
+                  {l.roles.toLocaleString(numFmt)}
                 </span>
                 <span className="w-44 font-medium md:w-56">{l.company}</span>
                 <span className="min-w-0 flex-1 basis-full text-white/60 md:basis-0">
@@ -140,11 +144,7 @@ export default function LayoffsStrip() {
           })}
         </ul>
 
-        <p className="mt-6 text-xs text-white/40">
-          Hover a tag for the reasoning. Classifications are editorial
-          judgements based on company statements and press coverage — not a
-          formal causal attribution.
-        </p>
+        <p className="mt-6 text-xs text-white/40">{tr(t.loHoverHint, lang)}</p>
       </div>
     </section>
   );

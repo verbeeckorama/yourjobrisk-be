@@ -2,39 +2,36 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-type Tab = {
-  href: string;
-  eyebrow: string;
-  label: string;
-  blurb: string;
-};
-
-const tabs: Tab[] = [
-  {
-    href: "/",
-    eyebrow: "01",
-    label: "AI exposure",
-    blurb: "Map · provinces · occupations · layoffs",
-  },
-  {
-    href: "/tool",
-    eyebrow: "02",
-    label: "Check my risk",
-    blurb: "Pick a province, role and scenario",
-  },
-  {
-    href: "/jevons",
-    eyebrow: "03",
-    label: "Jevons paradox?",
-    blurb: "The counter-view: more jobs, not fewer",
-  },
-];
+import { useLang, tr } from "@/components/LanguageProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { t } from "@/lib/i18n";
 
 export default function SiteNav() {
   const pathname = usePathname() || "/";
+  const lang = useLang();
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  const tabs = [
+    {
+      href: "/",
+      eyebrow: "01",
+      label: tr(t.navAiExposure, lang),
+      blurb: tr(t.navAiExposureBlurb, lang),
+    },
+    {
+      href: "/tool",
+      eyebrow: "02",
+      label: tr(t.navCheckRisk, lang),
+      blurb: tr(t.navCheckRiskBlurb, lang),
+    },
+    {
+      href: "/jevons",
+      eyebrow: "03",
+      label: tr(t.navJevons, lang),
+      blurb: tr(t.navJevonsBlurb, lang),
+    },
+  ];
 
   return (
     <div className="sticky top-0 z-40 border-b border-white/10 bg-ink/85 backdrop-blur supports-[backdrop-filter]:bg-ink/60">
@@ -44,28 +41,31 @@ export default function SiteNav() {
             href="/"
             className="text-xs uppercase tracking-[0.25em] text-white/70 hover:text-white"
           >
-            Your Job Risk · <span className="text-accent">Belgium</span>
+            {tr(t.navTagline, lang)} · <span className="text-accent">Belgium</span>
           </Link>
-          <Link
-            href="/methodology"
-            className={`text-[11px] uppercase tracking-[0.2em] transition md:text-xs ${
-              isActive("/methodology")
-                ? "text-accent"
-                : "text-white/50 hover:text-white"
-            }`}
-          >
-            Methodology →
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/methodology"
+              className={`text-[11px] uppercase tracking-[0.2em] transition md:text-xs ${
+                isActive("/methodology")
+                  ? "text-accent"
+                  : "text-white/50 hover:text-white"
+              }`}
+            >
+              {tr(t.navMethodology, lang)}
+            </Link>
+            <LanguageSwitcher />
+          </div>
         </div>
 
         <nav>
           <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {tabs.map((t) => {
-              const active = isActive(t.href);
+            {tabs.map((tab) => {
+              const active = isActive(tab.href);
               return (
-                <li key={t.href}>
+                <li key={tab.href}>
                   <Link
-                    href={t.href}
+                    href={tab.href}
                     aria-current={active ? "page" : undefined}
                     className={`group flex h-full flex-col rounded-sm border px-4 py-3 transition ${
                       active
@@ -79,7 +79,7 @@ export default function SiteNav() {
                           active ? "text-accent" : "text-accent/70"
                         }`}
                       >
-                        {t.eyebrow}
+                        {tab.eyebrow}
                       </span>
                       <span
                         className={`text-[10px] uppercase tracking-[0.25em] transition ${
@@ -88,7 +88,7 @@ export default function SiteNav() {
                             : "text-white/30 group-hover:text-accent"
                         }`}
                       >
-                        {active ? "● Viewing" : "→"}
+                        {active ? tr(t.navViewing, lang) : "→"}
                       </span>
                     </div>
                     <div
@@ -96,14 +96,14 @@ export default function SiteNav() {
                         active ? "text-accent" : "text-white"
                       }`}
                     >
-                      {t.label}
+                      {tab.label}
                     </div>
                     <div
                       className={`mt-1 text-xs ${
                         active ? "text-accent/80" : "text-white/55"
                       }`}
                     >
-                      {t.blurb}
+                      {tab.blurb}
                     </div>
                   </Link>
                 </li>

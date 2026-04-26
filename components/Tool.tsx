@@ -17,6 +17,14 @@ import {
   makeProjector,
   type FeatureCollection,
 } from "@/lib/geo";
+import { useLang, tr } from "@/components/LanguageProvider";
+import {
+  occupationExamplesI18n,
+  occupationNameI18n,
+  provinceNameI18n,
+  provinceNoteI18n,
+  t,
+} from "@/lib/i18n";
 
 type Props = { features: FeatureCollection };
 
@@ -36,13 +44,23 @@ function pressure(
   return Math.max(0, Math.min(1, (score / 100) * adoption * horizonFactor));
 }
 
-const factorLabels: Record<"fast" | "current" | "slow", string> = {
-  slow: "Slow: AI tooling stays in pilots",
-  current: "Current: today's adoption curve continues",
-  fast: "Fast: broad enterprise rollout",
-};
-
 export default function Tool({ features }: Props) {
+  const lang = useLang();
+  const numFmt = lang === "fr" ? "fr-BE" : lang === "nl" ? "nl-BE" : "en-BE";
+  const factorLabels: Record<"fast" | "current" | "slow", string> = {
+    slow: tr(t.toolScenarioSlow, lang),
+    current: tr(t.toolScenarioCurrent, lang),
+    fast: tr(t.toolScenarioFast, lang),
+  };
+  const provName = (nuts: string, fallback: string) =>
+    provinceNameI18n[nuts] ? tr(provinceNameI18n[nuts], lang) : fallback;
+  const occName = (isco: string, fallback: string) =>
+    occupationNameI18n[isco] ? tr(occupationNameI18n[isco], lang) : fallback;
+  const occExamples = (isco: string, fallback: string) =>
+    occupationExamplesI18n[isco]
+      ? tr(occupationExamplesI18n[isco], lang)
+      : fallback;
+
   const [scenario, setScenario] = useState<"slow" | "current" | "fast">(
     "current"
   );
@@ -120,16 +138,13 @@ export default function Tool({ features }: Props) {
     <div className="mx-auto max-w-6xl px-6 pt-10 pb-24 md:pt-16">
       <header className="max-w-3xl">
         <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
-          The Tool
+          {tr(t.toolEyebrow, lang)}
         </p>
         <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-          Click your province. Pick your role. See the number.
+          {tr(t.toolHeadline, lang)}
         </h1>
         <p className="mt-6 text-white/70 md:text-lg">
-          This is a scenario explorer, not a prediction. Adjust how fast AI
-          gets rolled out across Belgian workplaces and how far forward you
-          want to look, then click into your province and occupation to see
-          the resulting &quot;task-pressure&quot; estimate.
+          {tr(t.toolIntro, lang)}
         </p>
       </header>
 
@@ -137,7 +152,7 @@ export default function Tool({ features }: Props) {
       <div className="mt-10 grid gap-6 rounded-sm border border-white/10 bg-black/40 p-6 md:grid-cols-[1fr,auto]">
         <div>
           <div className="mb-3 text-xs uppercase tracking-[0.25em] text-white/50">
-            Adoption scenario
+            {tr(t.toolAdoption, lang)}
           </div>
           <div className="flex flex-wrap gap-2">
             {(["slow", "current", "fast"] as const).map((s) => {
@@ -160,8 +175,10 @@ export default function Tool({ features }: Props) {
         </div>
         <div className="md:min-w-[240px]">
           <div className="mb-3 flex items-baseline justify-between text-xs uppercase tracking-[0.25em] text-white/50">
-            <span>Horizon</span>
-            <span className="numeric text-white">{horizon} years</span>
+            <span>{tr(t.toolHorizon, lang)}</span>
+            <span className="numeric text-white">
+              {horizon} {tr(t.toolYears, lang)}
+            </span>
           </div>
           <input
             type="range"
@@ -180,11 +197,11 @@ export default function Tool({ features }: Props) {
               {countryAtRiskM.toFixed(1)}M
             </span>
             <span className="ml-2 text-white/60">
-              Belgian workers under task-pressure at this scenario
+              {tr(t.toolWorkersUnderPressure, lang)}
             </span>
           </div>
           <div className="text-xs text-white/40">
-            = Σ (group exposure × adoption × horizon/15) × employment share
+            {tr(t.toolFormula, lang)}
           </div>
         </div>
       </div>
@@ -194,16 +211,20 @@ export default function Tool({ features }: Props) {
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
           <div>
             <div className="text-xs uppercase tracking-[0.25em] text-accent">
-              Step 1
+              {tr(t.toolStepProvinceTitle, lang)}
             </div>
             <h2 className="mt-1 text-xl font-semibold md:text-2xl">
-              Click your province on the map
+              {tr(t.toolPickProvinceMap, lang)}
             </h2>
           </div>
           <SelectionBadge
-            label="Province"
-            value={selectedProvince?.name ?? null}
-            placeholder="none selected"
+            label={tr(t.toolProvinceLabel, lang)}
+            value={
+              selectedProvince
+                ? provName(selectedProvince.nuts, selectedProvince.name)
+                : null
+            }
+            placeholder={tr(t.toolNoneSelected, lang)}
           />
         </div>
       </div>
@@ -217,7 +238,7 @@ export default function Tool({ features }: Props) {
           <svg
             viewBox={`0 0 ${W} ${H}`}
             role="img"
-            aria-label="Interactive map of Belgian provinces"
+            aria-label={tr(t.toolMapAria, lang)}
             className="h-auto w-full"
           >
             {features.features.map((f) => {
@@ -239,7 +260,7 @@ export default function Tool({ features }: Props) {
                 >
                   <title>
                     {p
-                      ? `${p.name} — click to inspect`
+                      ? `${provName(p.nuts, p.name)} — ${tr(t.toolClickInspect, lang)}`
                       : f.properties.na}
                   </title>
                 </path>
@@ -282,7 +303,7 @@ export default function Tool({ features }: Props) {
             })}
           </svg>
           <div className="mt-3 flex items-center gap-3 text-xs text-white/50">
-            <span>Lower</span>
+            <span>{tr(t.geoLower, lang)}</span>
             <div
               className="h-2 flex-1 rounded-sm"
               style={{
@@ -290,7 +311,7 @@ export default function Tool({ features }: Props) {
                   "linear-gradient(90deg, rgb(42,42,40), rgb(255,65,51))",
               }}
             />
-            <span>Higher exposure</span>
+            <span>{tr(t.toolHigher, lang)}</span>
           </div>
         </div>
 
@@ -303,11 +324,11 @@ export default function Tool({ features }: Props) {
           {selectedProvince ? (
             <>
               <div className="text-xs uppercase tracking-[0.25em] text-white/50">
-                Selected province
+                {tr(t.toolSelectedProvince, lang)}
               </div>
               <div className="mt-1 flex items-baseline justify-between">
                 <h2 className="text-2xl font-semibold">
-                  {selectedProvince.name}
+                  {provName(selectedProvince.nuts, selectedProvince.name)}
                 </h2>
                 <span
                   className="numeric rounded-sm px-2 py-0.5 text-sm font-semibold"
@@ -319,21 +340,23 @@ export default function Tool({ features }: Props) {
                 </span>
               </div>
               <p className="mt-3 text-sm text-white/70">
-                {selectedProvince.note}
+                {provinceNoteI18n[selectedProvince.nuts]
+                  ? tr(provinceNoteI18n[selectedProvince.nuts], lang)
+                  : selectedProvince.note}
               </p>
 
               <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <dt className="text-xs uppercase tracking-widest text-white/40">
-                    Workers
+                    {tr(t.toolWorkers, lang)}
                   </dt>
                   <dd className="numeric mt-1 text-lg text-white">
-                    {selectedProvince.workers.toLocaleString("en-BE")}k
+                    {selectedProvince.workers.toLocaleString(numFmt)}k
                   </dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-widest text-white/40">
-                    Under task-pressure
+                    {tr(t.toolUnderPressure, lang)}
                   </dt>
                   <dd className="numeric mt-1 text-lg text-accent">
                     {Math.round(
@@ -342,13 +365,13 @@ export default function Tool({ features }: Props) {
                         adoption,
                         horizon
                       ) * selectedProvince.workers
-                    ).toLocaleString("en-BE")}
+                    ).toLocaleString(numFmt)}
                     k
                   </dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-widest text-white/40">
-                    Region
+                    {tr(t.toolRegion, lang)}
                   </dt>
                   <dd className="mt-1 text-white/80">
                     {selectedProvince.region}
@@ -356,7 +379,7 @@ export default function Tool({ features }: Props) {
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-widest text-white/40">
-                    NUTS-2
+                    {tr(t.toolNuts, lang)}
                   </dt>
                   <dd className="numeric mt-1 text-white/80">
                     {selectedProvince.nuts}
@@ -370,10 +393,10 @@ export default function Tool({ features }: Props) {
                 1
               </div>
               <div className="text-white/80">
-                Click one of the 11 provinces on the map to begin.
+                {tr(t.toolStartHint, lang)}
               </div>
               <div className="text-xs text-white/40">
-                Darker red = higher AI exposure.
+                {tr(t.toolDarkerRed, lang)}
               </div>
             </div>
           )}
@@ -396,22 +419,24 @@ export default function Tool({ features }: Props) {
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
           <div>
             <div className="text-xs uppercase tracking-[0.25em] text-accent">
-              Step 2
+              {tr(t.toolStepOccupationTitle, lang)}
             </div>
             <h2 className="mt-1 text-2xl font-semibold md:text-3xl">
-              Pick your occupation
+              {tr(t.toolPickOccupationHeadline, lang)}
             </h2>
           </div>
           <SelectionBadge
-            label="Occupation"
-            value={selectedOccupation?.name ?? null}
-            placeholder="none selected"
+            label={tr(t.toolOccupationLabel, lang)}
+            value={
+              selectedOccupation
+                ? occName(selectedOccupation.isco, selectedOccupation.name)
+                : null
+            }
+            placeholder={tr(t.toolNoneSelected, lang)}
           />
         </div>
         <p className="mt-3 max-w-2xl text-white/60">
-          Choose your occupation family (ISCO-08 major group). The site
-          combines its AIOE-derived score with the province score above
-          and the current scenario to produce your task-pressure estimate.
+          {tr(t.toolPickOccupationHelp, lang)}
         </p>
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -435,14 +460,14 @@ export default function Tool({ features }: Props) {
                         active ? "text-accent" : "text-white"
                       }`}
                     >
-                      {o.name}
+                      {occName(o.isco, o.name)}
                     </span>
                     <span className="numeric text-sm text-white/60">
                       {o.exposure}
                     </span>
                   </div>
                   <div className="mt-1 text-xs text-white/40 line-clamp-1">
-                    {o.examples}
+                    {occExamples(o.isco, o.examples)}
                   </div>
                 </button>
               );
@@ -452,50 +477,50 @@ export default function Tool({ features }: Props) {
         {/* Result */}
         <div className="mt-10 border-t border-white/10 pt-8">
           <div className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
-            Your estimate
+            {tr(t.toolYourEstimate, lang)}
           </div>
           {bothSelected ? (
             <div className="grid gap-6 md:grid-cols-3">
               <ResultStat
-                label="Composite exposure"
+                label={tr(t.toolCompositeExposure, lang)}
                 value={personalExposure.toFixed(0)}
-                hint="avg. of province + occupation (0–100)"
+                hint={tr(t.toolCompositeHint, lang)}
               />
               <ResultStat
-                label="Task-pressure"
+                label={tr(t.toolTaskPressure, lang)}
                 value={`${Math.round(personalPressure * 100)}%`}
-                hint="share of your task-basket plausibly substitutable"
+                hint={tr(t.toolTaskPressureHint, lang)}
                 accent
               />
               <ResultStat
-                label="Scenario"
+                label={tr(t.toolScenarioLabel, lang)}
                 value={
                   scenario === "slow"
-                    ? "Slow"
+                    ? tr(t.toolScenarioSlowShort, lang)
                     : scenario === "fast"
-                      ? "Fast"
-                      : "Current"
+                      ? tr(t.toolScenarioFastShort, lang)
+                      : tr(t.toolScenarioCurrentShort, lang)
                 }
-                hint={`${horizon}-year horizon`}
+                hint={tr(t.toolHorizonShort, lang).replace(
+                  "{n}",
+                  String(horizon)
+                )}
               />
             </div>
           ) : (
             <div className="flex flex-wrap gap-3 text-sm">
               <StepPrompt done={Boolean(selectedProvince)} n={1}>
-                Select a province on the map above
+                {tr(t.toolStepSelectProvince, lang)}
               </StepPrompt>
               <StepPrompt done={Boolean(selectedOccupation)} n={2}>
-                Select an occupation here
+                {tr(t.toolStepSelectOccupation, lang)}
               </StepPrompt>
             </div>
           )}
         </div>
 
         <p className="mt-6 max-w-2xl text-xs text-white/40">
-          Task-pressure is not the probability of losing your job. It is
-          an indicative measure of how much of what you do today could be
-          done, in whole or in part, by current AI systems at the chosen
-          adoption level and horizon.
+          {tr(t.toolDisclaimer, lang)}
         </p>
       </section>
     </div>

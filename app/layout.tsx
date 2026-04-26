@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.yourjobrisk.be";
@@ -68,8 +69,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen antialiased">
-        <SiteNav />
-        {children}
+        <LanguageProvider>
+          <SiteNav />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
