@@ -41,9 +41,9 @@ type T = Record<Lang, string>;
 
 export const t = {
   // Site nav
-  navTagline: { en: "Your Job Risk", nl: "Jouw jobrisico", fr: "Votre risque emploi" } as T,
+  navTagline: { en: "Your Job Risk", nl: "Jouw jobrisico", fr: "Risque pour votre emploi" } as T,
   navMethodology: { en: "Methodology →", nl: "Methodologie →", fr: "Méthodologie →" } as T,
-  navAiExposure: { en: "AI exposure", nl: "AI-blootstelling", fr: "Exposition à l'IA" } as T,
+  navAiExposure: { en: "AI exposure", nl: "Blootstelling aan AI", fr: "Exposition à l'IA" } as T,
   navAiExposureBlurb: {
     en: "Map · provinces · occupations · layoffs",
     nl: "Kaart · provincies · beroepen · ontslagen",
@@ -67,20 +67,20 @@ export const t = {
   heroEyebrow: {
     en: "Your Job Risk · Belgium edition",
     nl: "Jouw jobrisico · Belgische versie",
-    fr: "Votre risque emploi · version belge",
+    fr: "Risque pour votre emploi · version belge",
   } as T,
   heroJobs: { en: "jobs.", nl: "jobs.", fr: "emplois." } as T,
   heroEmployers: { en: "employers.", nl: "werkgevers.", fr: "employeurs." } as T,
   heroYears: { en: "2 years.", nl: "2 jaar.", fr: "2 ans." } as T,
   heroSubtitle: {
     en: "AI-era restructuring isn't a future event in Belgium. It is showing up in corporate plans, call-centre floors and back-office teams — province by province, role by role.",
-    nl: "AI-herstructurering is geen toekomstmuziek in België. Ze duikt op in transformatieplannen, callcenters en back-officeteams — provincie per provincie, functie per functie.",
+    nl: "AI-herstructurering is geen toekomstmuziek in België. Ze duikt op in transformatieplannen, call-centers en back-officeteams — provincie per provincie, functie per functie.",
     fr: "La restructuration liée à l'IA n'est pas un événement futur en Belgique. Elle apparaît dans les plans d'entreprise, les call-centers et les équipes back-office — province par province, métier par métier.",
   } as T,
   heroCaveat: {
     en: "Exposure is not destiny: this measures task pressure, not the probability that any one person loses a job.",
-    nl: "Blootstelling is geen lot: dit meet taakdruk, niet de kans dat één persoon zijn job verliest.",
-    fr: "L'exposition n'est pas un destin : on mesure ici la pression sur les tâches, pas la probabilité qu'une personne perde son emploi.",
+    nl: "Deze score zegt niet wat er met jouw job gebeurt: hij meet druk op taken, geen individuele kans op jobverlies.",
+    fr: "Ce score ne dit pas ce qui arrivera à votre emploi : il mesure l'exposition des tâches, pas la probabilité individuelle de perdre son emploi.",
   } as T,
   heroCta: { en: "Check my risk →", nl: "Bereken mijn risico →", fr: "Calculer mon risque →" } as T,
   heroStatWorkers: {
@@ -91,7 +91,7 @@ export const t = {
   heroStatProvinces: { en: "Provinces", nl: "Provincies", fr: "Provinces" } as T,
   heroStatElevated: {
     en: "At elevated AI exposure",
-    nl: "Met verhoogde AI-blootstelling",
+    nl: "Met verhoogde blootstelling aan AI",
     fr: "À forte exposition à l'IA",
   } as T,
   heroStatFramework: {
@@ -104,12 +104,12 @@ export const t = {
   geoEyebrow: { en: "Section 01 · Geography", nl: "Sectie 01 · Geografie", fr: "Section 01 · Géographie" } as T,
   geoHeadline: {
     en: "The most AI-exposed part of Belgium isn't a factory town.",
-    nl: "Het meest AI-blootgestelde stuk van België is geen fabrieksstad.",
+    nl: "Het meest aan AI blootgestelde deel van België is geen fabrieksstad.",
     fr: "La partie la plus exposée à l'IA n'est pas une ville industrielle.",
   } as T,
   geoIntro: {
     en: "It's the square kilometre around Rue de la Loi. Brussels' concentration of EU institutions, banks and consultancies gives it the highest cognitive-AI exposure score in the country — followed closely by the Leuven and Louvain-la-Neuve corridors.",
-    nl: "Het is de vierkante kilometer rond de Wetstraat. De concentratie van EU-instellingen, banken en consultancybureaus in Brussel geeft de hoofdstad de hoogste score voor cognitieve AI-blootstelling van het land — gevolgd door de assen Leuven en Louvain-la-Neuve.",
+    nl: "Het is de vierkante kilometer rond de Wetstraat. De concentratie van EU-instellingen, banken en consultancybureaus in Brussel geeft de hoofdstad de hoogste score voor cognitieve blootstelling aan AI — gevolgd door de assen Leuven en Louvain-la-Neuve.",
     fr: "C'est le kilomètre carré autour de la rue de la Loi. La concentration d'institutions européennes, de banques et de cabinets-conseils donne à Bruxelles le score le plus élevé du pays — suivie de près par les axes de Louvain et Louvain-la-Neuve.",
   } as T,
   geoLower: { en: "Lower exposure", nl: "Lagere blootstelling", fr: "Faible exposition" } as T,
@@ -121,7 +121,7 @@ export const t = {
   } as T,
   geoMapAria: {
     en: "Choropleth map of Belgian provinces by AI exposure",
-    nl: "Choropletenkaart van Belgische provincies naar AI-blootstelling",
+    nl: "Choropletenkaart van Belgische provincies volgens blootstelling aan AI",
     fr: "Carte choroplèthe des provinces belges par exposition à l'IA",
   } as T,
 
@@ -134,8 +134,8 @@ export const t = {
   } as T,
   occIntro: {
     en: "Using the Felten–Raj–Rock AI Occupational Exposure index mapped onto ISCO-08 major groups, clerical roles and professional knowledge work score highest. Trades, agriculture and elementary occupations score lowest.",
-    nl: "Op basis van de Felten–Raj–Rock AIOE-index, gemapt op de ISCO-08 hoofdgroepen, scoren administratieve en professionele kennisberoepen het hoogst. Vakberoepen, landbouw en elementaire beroepen scoren het laagst.",
-    fr: "Sur la base de l'indice AIOE de Felten–Raj–Rock, projeté sur les grands groupes ISCO-08, les emplois administratifs et les métiers de la connaissance arrivent en tête. Métiers manuels, agriculture et professions élémentaires ferment la marche.",
+    nl: "Op basis van de Felten–Raj–Rock AIOE-index, gekoppeld aan de ISCO-08 hoofdgroepen, scoren administratieve en professionele kennisberoepen het hoogst. Vakberoepen, landbouw en eenvoudige beroepen scoren het laagst.",
+    fr: "Sur la base de l'indice AIOE de Felten–Raj–Rock, projeté sur les grands groupes ISCO-08, les emplois administratifs et les métiers intellectuels arrivent en tête. Métiers manuels, agriculture et emplois peu qualifiés ferment la marche.",
   } as T,
   occHIsco: { en: "ISCO", nl: "ISCO", fr: "CITP" } as T,
   occHGroup: { en: "Occupation group", nl: "Beroepsgroep", fr: "Groupe de métiers" } as T,
@@ -234,11 +234,11 @@ export const t = {
   ftSiteName: {
     en: "Your Job Risk · Belgium",
     nl: "Jouw jobrisico · België",
-    fr: "Votre risque emploi · Belgique",
+    fr: "Risque pour votre emploi · Belgique",
   } as T,
   ftAbout: {
     en: "An independent, non-commercial research site modelling AI exposure across Belgium's provinces and occupations.",
-    nl: "Een onafhankelijke, niet-commerciële onderzoekssite die AI-blootstelling modelleert over de Belgische provincies en beroepen.",
+    nl: "Een onafhankelijke, niet-commerciële onderzoekssite die blootstelling aan AI modelleert in Belgische provincies en beroepen.",
     fr: "Un site de recherche indépendant, non commercial, qui modélise l'exposition à l'IA dans les provinces et métiers belges.",
   } as T,
   ftMethodology: { en: "Methodology", nl: "Methodologie", fr: "Méthodologie" } as T,
@@ -311,8 +311,8 @@ export const t = {
   } as T,
   toolMagnitude: {
     en: "Modelled task-pressure",
-    nl: "Gemodelleerde taakdruk",
-    fr: "Pression sur les tâches (modélisée)",
+    nl: "Gemodelleerde druk op taken",
+    fr: "Exposition des tâches (modélisée)",
   } as T,
   toolMagnitudeHelp: {
     en: "Share of this role's task basket plausibly substitutable by AI over the chosen horizon at the chosen adoption speed.",
@@ -323,8 +323,8 @@ export const t = {
   // Tool — additional labels
   toolWorkersUnderPressure: {
     en: "Belgian workers under task-pressure at this scenario",
-    nl: "Belgische werkenden onder taakdruk in dit scenario",
-    fr: "actifs belges sous pression sur les tâches dans ce scénario",
+    nl: "Belgische werkenden met verhoogde druk op taken in dit scenario",
+    fr: "actifs belges dont les tâches sont exposées dans ce scénario",
   } as T,
   toolFormula: {
     en: "= Σ (group exposure × adoption × horizon/15) × employment share",
@@ -346,8 +346,8 @@ export const t = {
   } as T,
   toolPickOccupationHelp: {
     en: "Choose your occupation family (ISCO-08 major group). The site combines its AIOE-derived score with the province score above and the current scenario to produce your task-pressure estimate.",
-    nl: "Kies je beroepsgroep (ISCO-08 hoofdgroep). De site combineert de AIOE-score met de provinciescore en het huidige scenario tot een taakdruk-schatting.",
-    fr: "Choisissez votre famille de métiers (grand groupe CITP-08). Le site combine son score AIOE avec celui de la province et le scénario en cours pour produire votre estimation de pression sur les tâches.",
+    nl: "Kies je beroepsgroep (ISCO-08 hoofdgroep). De site combineert de AIOE-score met de provinciescore en het huidige scenario tot een schatting van de druk op je taken.",
+    fr: "Choisissez votre famille de métiers (grand groupe CITP-08). Le site combine son score AIOE avec celui de la province et le scénario en cours pour estimer l'exposition de vos tâches.",
   } as T,
   toolStartHint: {
     en: "Click one of the 11 provinces on the map to begin.",
@@ -356,7 +356,7 @@ export const t = {
   } as T,
   toolDarkerRed: {
     en: "Darker red = higher AI exposure.",
-    nl: "Donkerder rood = hogere AI-blootstelling.",
+    nl: "Donkerder rood = hogere blootstelling aan AI.",
     fr: "Rouge plus foncé = exposition plus élevée à l'IA.",
   } as T,
   toolSelectedProvince: {
@@ -367,8 +367,8 @@ export const t = {
   toolWorkers: { en: "Workers", nl: "Werkenden", fr: "Actifs" } as T,
   toolUnderPressure: {
     en: "Under task-pressure",
-    nl: "Onder taakdruk",
-    fr: "Sous pression sur les tâches",
+    nl: "Taken onder druk",
+    fr: "Tâches exposées",
   } as T,
   toolRegion: { en: "Region", nl: "Regio", fr: "Région" } as T,
   toolNuts: { en: "NUTS-2", nl: "NUTS-2", fr: "NUTS-2" } as T,
@@ -385,8 +385,8 @@ export const t = {
   } as T,
   toolTaskPressure: {
     en: "Task-pressure",
-    nl: "Taakdruk",
-    fr: "Pression sur les tâches",
+    nl: "Druk op taken",
+    fr: "Exposition des tâches",
   } as T,
   toolTaskPressureHint: {
     en: "share of your task-basket plausibly substitutable",
@@ -415,7 +415,7 @@ export const t = {
   } as T,
   toolSensitivityProvince: { en: "Province", nl: "Provincie", fr: "Province" } as T,
   toolSensitivityOccupation: { en: "Occupation", nl: "Beroep", fr: "Métier" } as T,
-  toolSensitivityPressure: { en: "Task-pressure", nl: "Taakdruk", fr: "Pression sur les tâches" } as T,
+  toolSensitivityPressure: { en: "Task-pressure", nl: "Druk op taken", fr: "Exposition des tâches" } as T,
   toolSensitivityScale: { en: "score out of 100", nl: "score op 100", fr: "score sur 100" } as T,
   toolSensitivityLowBaseHigh: { en: "low / base / high", nl: "laag / basis / hoog", fr: "bas / central / haut" } as T,
   toolLimitsTitle: {
@@ -444,8 +444,8 @@ export const t = {
   } as T,
   toolDisclaimer: {
     en: "Task-pressure is not the probability of losing your job. It is an indicative measure of how much of what you do today could be done, in whole or in part, by current AI systems at the chosen adoption level and horizon.",
-    nl: "Taakdruk is niet de kans om je job te verliezen. Het is een indicatieve maat voor hoeveel van wat je vandaag doet, geheel of gedeeltelijk gedaan zou kunnen worden door huidige AI-systemen bij het gekozen adoptieniveau en de gekozen horizon.",
-    fr: "La pression sur les tâches n'est pas la probabilité de perdre votre emploi. C'est une mesure indicative de la part de ce que vous faites aujourd'hui qui pourrait être réalisée, en tout ou en partie, par les systèmes d'IA actuels au niveau d'adoption et à l'horizon choisis.",
+    nl: "Druk op taken is niet hetzelfde als de kans om je job te verliezen. Het is een indicatieve maat voor hoeveel van wat je vandaag doet, geheel of gedeeltelijk gedaan zou kunnen worden door huidige AI-systemen bij het gekozen adoptieniveau en de gekozen horizon.",
+    fr: "L'exposition des tâches n'est pas la probabilité de perdre votre emploi. C'est une mesure indicative de la part de ce que vous faites aujourd'hui qui pourrait être réalisée, en tout ou en partie, par les systèmes d'IA actuels au niveau d'adoption et à l'horizon choisis.",
   } as T,
   toolStepProvinceTitle: {
     en: "Step 1",
@@ -542,7 +542,7 @@ export const provinceNoteI18n: Record<string, T> = {
   BE32: {
     en: "Post-industrial economy with a lower knowledge-work share.",
     nl: "Postindustriële economie met een lager aandeel kenniswerk.",
-    fr: "Économie post-industrielle avec une part plus faible de travail de la connaissance.",
+    fr: "Économie post-industrielle avec une part plus faible de travail intellectuel.",
   },
   BE35: {
     en: "Walloon administrative capital lifts the clerical share.",
@@ -566,13 +566,13 @@ export const occupationNameI18n: Record<string, T> = {
   "2": { en: "Professionals", nl: "Kenniswerkers", fr: "Professions intellectuelles" },
   "3": {
     en: "Technicians & associate professionals",
-    nl: "Technici & gelijkgestelden",
+    nl: "Technici en ondersteunende professionals",
     fr: "Techniciens & professions intermédiaires",
   },
   "4": {
     en: "Clerical support workers",
-    nl: "Administratief personeel",
-    fr: "Employés administratifs",
+    nl: "Administratieve medewerkers",
+    fr: "Agents administratifs",
   },
   "5": {
     en: "Service & sales workers",
@@ -596,8 +596,8 @@ export const occupationNameI18n: Record<string, T> = {
   },
   "9": {
     en: "Elementary occupations",
-    nl: "Elementaire beroepen",
-    fr: "Professions élémentaires",
+    nl: "Eenvoudige beroepen",
+    fr: "Emplois peu qualifiés",
   },
 };
 
@@ -614,7 +614,7 @@ export const occupationExamplesI18n: Record<string, T> = {
   },
   "3": {
     en: "IT support, lab technicians, sales reps, paramedics",
-    nl: "IT-support, labotechnici, vertegenwoordigers, paramedici",
+    nl: "IT-support, labotechnici, vertegenwoordigers, paramedische beroepen",
     fr: "Support IT, techniciens de labo, commerciaux, paramédicaux",
   },
   "4": {
@@ -644,7 +644,7 @@ export const occupationExamplesI18n: Record<string, T> = {
   },
   "9": {
     en: "Cleaners, food prep helpers, refuse workers",
-    nl: "Schoonmakers, keukenhulpen, ophalers",
+    nl: "Schoonmakers, keukenhulpen, afvalwerkers",
     fr: "Nettoyeurs, aides en cuisine, agents de collecte",
   },
 };

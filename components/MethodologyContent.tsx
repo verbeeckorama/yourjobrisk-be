@@ -68,7 +68,7 @@ const backToMap: Record<Lang, string> = {
 const titles = {
   s1: {
     en: "1. What \"AI exposure\" means here",
-    nl: "1. Wat \"AI-blootstelling\" hier betekent",
+    nl: "1. Wat \"blootstelling aan AI\" hier betekent",
     fr: "1. Ce que \"exposition à l'IA\" signifie ici",
   },
   s2: {
@@ -83,7 +83,7 @@ const titles = {
   },
   s4: {
     en: "4. Province totals and headline numbers",
-    nl: "4. Provinciale totalen en headlinecijfers",
+    nl: "4. Provinciale totalen en kerncijfers",
     fr: "4. Totaux par province et chiffres-clés",
   },
   s5: {
@@ -402,11 +402,11 @@ const bodyNl = {
         Belgische werkende beroepsbevolking.
       </p>
       <p>
-        Het aggregaat <strong>&quot;met verhoogde AI-blootstelling&quot;</strong>{" "}
+        Het aggregaat <strong>&quot;met verhoogde blootstelling aan AI&quot;</strong>{" "}
         telt werkenden in ISCO-groepen met een score ≥ 60 op de
         beroepenschaal — kenniswerkers, managers, technici en
         administratief personeel. Dat is een verdedigbare drempel, maar
-        wel een drempel: zet hem op 55 of 65 en het headlinecijfer
+        wel een drempel: zet hem op 55 of 65 en het kerncijfer
         verschuift met ongeveer ±0,5 miljoen.
       </p>
     </>
@@ -415,7 +415,7 @@ const bodyNl = {
     <>
       <p>
         Elke herstructureringsaankondiging van de voorbije 24 maanden krijgt
-        een redactionele <strong>AI-factor</strong>. De rubriek:
+        een redactionele <strong>AI-factor</strong>. De indeling:
       </p>
       <ul>
         <li>
@@ -439,7 +439,7 @@ const bodyNl = {
           <strong className="text-white/60">Niet-AI</strong> — de
           herstructurering is vooral een geopolitieke, energie-, vraag-
           of sectorspecifieke schok, gericht op rollen (productie, retail,
-          fabriek) die de AIOE niet flagt. Voorbeeld: Audi Brussels, Cora,
+          fabriek) die de AIOE niet als sterk blootgesteld aanduidt. Voorbeeld: Audi Brussels, Cora,
           Van Hool, BASF Antwerpen, ExxonMobil, Villeroy &amp; Boch, BAT.
         </li>
       </ul>
@@ -475,7 +475,7 @@ const bodyNl = {
       Klopt een cijfer niet, ontbreekt er een ontslag of is een
       classificatie onrechtvaardig voor een bedrijf? De code en data
       zitten in één bestand (<code>lib/data.ts</code>) in de repository —
-      open een issue of pull request en het kan in minuten gefixt worden.
+      open een issue of pull request en het kan in enkele minuten worden aangepast.
     </p>
   ),
 };
@@ -494,7 +494,7 @@ const bodyFr = {
         l'entreprise, des institutions et de la politique.
       </p>
       <p>
-        Le construct sous-jacent est l'index{" "}
+        Le cadre sous-jacent est l'indice{" "}
         <strong>AI Occupational Exposure (AIOE)</strong> de{" "}
         <em>Felten, Raj &amp; Rock (2021)</em>, qui relie les applications
         de l'IA aux capacités O*NET dont dépend une profession. Lisez le
@@ -563,7 +563,7 @@ const bodyFr = {
           <strong>Ajustement sectoriel :</strong> une petite correction
           pour l'intensité sectorielle au niveau provincial (ex.
           institutions européennes à Bruxelles, chimie à Anvers,
-          auto/logistique au Limbourg, retail/services au Luxembourg)
+          auto/logistique au Limbourg, commerce/services au Luxembourg)
           tirée des comptes régionaux Eurostat.
         </li>
       </ol>
@@ -653,7 +653,7 @@ const bodyFr = {
     <ul>
       <li>
         Pas une prévision. Pas de simulation Monte Carlo, pas de
-        projection 2030/2035, pas de revendication &quot;X % d'emplois
+        projection 2030/2035, pas d'affirmation &quot;X % d'emplois
         seront perdus&quot;.
       </li>
       <li>

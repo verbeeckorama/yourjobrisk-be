@@ -289,11 +289,11 @@ const content: Record<Lang, Content> = {
 
   nl: {
     eyebrow: "Jouw jobrisico · België · Tegenargument",
-    h1Pre: "Wat als AI de jobs die hij lijkt te killen, juist ",
+    h1Pre: "Wat als AI de jobs die hij lijkt te bedreigen, juist ",
     h1Accent: "doet groeien",
     h1Post: "?",
     intro:
-      "De rest van deze site behandelt AI-blootstelling als risico: taken die een model aankan, zijn taken die een werknemer kan verliezen. Deze pagina draait dat om. Als kenniswerk 10× goedkoper wordt, leert de geschiedenis dat de totale vraag ernaar kan stíjgen, niet dalen. Steenkool in 1865. Geldautomaten in de jaren '90. Code in 2026?",
+      "De rest van deze site behandelt blootstelling aan AI als risico: taken die een model aankan, zijn taken die een werknemer kan verliezen. Deze pagina draait dat om. Als kenniswerk 10× goedkoper wordt, leert de geschiedenis dat de totale vraag ernaar kan stíjgen, niet dalen. Steenkool in 1865. Geldautomaten in de jaren '90. Code in 2026?",
     ctaSignals: "Belgische signalen →",
     ctaPhases: "Fase 1 vs fase 2",
     statYear: "Jaar dat Jevons publiceerde",
@@ -311,13 +311,13 @@ const content: Record<Lang, Content> = {
       "De moderne herformulering: wanneer een input goedkoper wordt, kan het totale verbruik ervan stijgen als de vraag prijs-elastisch is en er latente, onvervulde vraag bestaat. Verlichting, computerkracht, bandbreedte en luchtvervoer hebben dit pad allemaal afgelegd.",
     s1ClaimEyebrow: "De AI-Jevons-claim, in één zin",
     s1Claim:
-      "Als generatieve AI de eenheidsprijs van een cognitieve taak met een orde van grootte verlaagt, zal de totale output van die taak stijgen — en in veel gevallen ook de tewerkstelling van de mensen die die taak aansturen.",
+      "Als generatieve AI de eenheidsprijs van een cognitieve taak met een orde van grootte verlaagt, zal de totale output van die taak stijgen — en in veel gevallen ook de werkgelegenheid voor de mensen die die taak aansturen.",
     s1Analogues:
-      "Historische analogieën: geldautomaten en bankloketten (Bessen, 2015). Spreadsheets en boekhouders. Desktop publishing en grafisch ontwerpers. E-discovery en juridische assistenten. Telkens stortte de kost per taak in, schreeuwde de pers \"X is dood\", en bleef de tewerkstelling in dat beroep jaren stijgen.",
+      "Historische analogieën: geldautomaten en bankloketten (Bessen, 2015). Spreadsheets en boekhouders. Desktop publishing en grafisch ontwerpers. E-discovery en juridische assistenten. Telkens zakte de kost per taak fors, kopte de pers \"X is dood\", en bleef de werkgelegenheid in dat beroep jaren stijgen.",
     s2Eyebrow: "Sectie 02 · De drie voorwaarden",
     s2Headline: "Drie dingen moeten waar zijn opdat AI een job laat groeien in plaats van haar te vernietigen.",
     s2Intro:
-      "Wanneer AI een taak veel goedkoper maakt, kan de tewerkstelling in dat beroep groeien — maar alleen als alle drie deze voorwaarden tegelijk gelden. Faalt één ervan, dan krijg je verdringing.",
+      "Wanneer AI een taak veel goedkoper maakt, kan de werkgelegenheid in dat beroep groeien — maar alleen als alle drie deze voorwaarden tegelijk gelden. Valt één ervan weg, dan krijg je verdringing.",
     conditions: [
       {
         n: "01",
@@ -335,16 +335,16 @@ const content: Record<Lang, Content> = {
         n: "03",
         title: "Een nieuwe bottleneck verschijnt, en die is menselijk",
         body:
-          "Zodra het model de routinetaak aankan, verschuift de beperking naar oordeel, smaak, domeinexpertise, distributie, vertrouwen en regulatoire goedkeuring. Die zaken zitten nog steeds bij mensen, dus de aanwervingen verschuiven daarheen.",
+          "Zodra het model de routinetaak aankan, verschuift de beperking naar oordeel, smaak, domeinexpertise, distributie, vertrouwen en goedkeuring door toezichthouders. Die zaken zitten nog steeds bij mensen, dus de aanwervingen verschuiven daarheen.",
       },
     ],
     s3Eyebrow: "Sectie 03 · Waar je naar moet kijken, in volgorde",
     s3Headline: "Een Jevons-effect is zichtbaar voordat het dominant wordt.",
     diagnostics: [
-      "De output per werknemer springt meetbaar omhoog (gemergde PR's, opgeloste tickets, vertaalde woorden, gereviewde contracten).",
+      "De output per werknemer stijgt meetbaar (samengevoegde PR's, opgeloste tickets, vertaalde woorden, nagekeken contracten).",
       "De eenheidsprijs van de output daalt — of de kwaliteit bij gelijke prijs stijgt sterk.",
       "Het volume stijgt sneller dan de prijs daalt. De totale uitgaven aan de taak nemen toe. (Het diagnostische Jevons-signaal.)",
-      "Vacatures hervormen zich, ze krimpen niet alleen: senior \"eigenaar van de AI-workflow\"-rollen stijgen, gespecialiseerde producentenrollen dalen, juniors worden uitgeknepen.",
+      "Vacatures veranderen van vorm, ze krimpen niet alleen: senior rollen voor wie de AI-werkwijze beheert nemen toe, gespecialiseerde productierollen dalen, juniors komen onder druk.",
       "Aanverwante beroepen schieten omhoog (meer code → meer PM's, data-engineers, security, compliance).",
       "De lonen van de overlevenden stijgen, zelfs als het personeelsbestand in de nichespecialisatie stabiliseert.",
     ],
@@ -362,7 +362,7 @@ const content: Record<Lang, Content> = {
         signal: "early",
         who: "Devs, data-engineers, platformteams in Brussel–Antwerpen–Leuven, plus Smals en de EU-instellingen.",
         what:
-          "25–55% productiviteitswinst op afgebakende codeertaken in gepubliceerde RCT's; het totale aantal EU-developers groeit nog steeds in 2024–2025; instromende CS-aanwervingen zijn duidelijk zwakker dan andere afgestudeerdensegmenten. Output stijgt, samenstelling verschuift naar senior.",
+          "25–55% productiviteitswinst op afgebakende codeertaken in gepubliceerde RCT's; het totale aantal EU-developers groeit nog steeds in 2024–2025; aanwervingen van pas afgestudeerde informatici zijn duidelijk zwakker dan in andere segmenten. Output stijgt, de samenstelling verschuift naar senior profielen.",
         belgian:
           "De jaarlijkse Digital Skills Barometer van Agoria blijft developer- en data-rollen aanmerken als structurele knelpuntberoepen, zelfs na twee jaar massale Copilot/Claude-adoptie. VDAB en Le Forem houden ICT-rollen bovenaan de knelpuntenlijsten. Belgische softwarewerkgevers — Odoo, Showpad, Collibra, Itineris, Smals, de EU-agentschappen in Brussel — werven netto nog steeds aan in 2025–2026, terwijl de output per engineer zichtbaar omhoog is gegaan. De klassieke Jevons-handtekening.",
         links: [
@@ -391,7 +391,7 @@ const content: Record<Lang, Content> = {
         signal: "mixed",
         who: "Proximus, Telenet, Orange Belgium, KBC, Belfius, ING Belgium, AG Insurance, Engie BE — eerste- en tweedelijns servicedesks.",
         what:
-          "Klarna, IKEA, BT en anderen meldden grote deflecties naar AI-agents; Klarna trok later delen van die claims terug. De totale tewerkstelling in support is niet ingestort, maar de rolmix schuift op in de waardeketen. Of dit een steady-state Jevons of een tijdelijke transitie is, blijft open.",
+          "Klarna, IKEA, BT en anderen meldden dat grote volumes klantcontact naar AI-agenten verschoven; Klarna trok later delen van die claims terug. De totale tewerkstelling in support is niet ingestort, maar de rolmix schuift op in de waardeketen. Of dit een stabiel Jevons-effect of een tijdelijke transitie is, blijft open.",
         belgian:
           "Proximus heeft AI publiekelijk centraal gezet in zijn transformatieplan en heeft al jobimpact geboekt in klantgerichte rollen. KBC's Kate-assistent is al jaren live en KBC blijft customer-experience-medewerkers aanwerven rond die assistent. Telenet, Belfius en ING Belgium hebben in 2024–2025 allemaal generatieve-AI-assistenten uitgerold. Het vroege Belgische patroon: augmentatie aan de seniorkant en compressie in tier-1 — zichtbaar in de ontslagstrip op de homepage.",
         links: [
@@ -406,9 +406,9 @@ const content: Record<Lang, Content> = {
         signal: "early",
         who: "Brusselse balieadvocaten, in-house juristen en compliance officers in finance en farma. Magic-circle en Belgische kantoren: Stibbe, Eubelius, Liedekerke, Loyens & Loeff, Linklaters en Clifford Chance Brussels.",
         what:
-          "Tools als Harvey, CoCounsel en Lexis+ AI verkorten onderzoek en contractreview drastisch. Het personeelsbestand is ongeveer vlak tot stijgend; het volume gereviewde dossiers stijgt fors. De bottleneck is verschoven naar partner-aftekening en compliance — beide menselijk.",
+          "Tools als Harvey, CoCounsel en Lexis+ AI verkorten onderzoek en contractreview drastisch. Het personeelsbestand blijft ongeveer gelijk of groeit licht; het volume nagekeken dossiers stijgt fors. De bottleneck is verschoven naar goedkeuring door partners en compliance — allebei mensenwerk.",
         belgian:
-          "België zit middenin drie regulatoire golven tegelijk — de EU AI Act, DORA voor financiële diensten en de post-AVG handhaving door GBA/APD. Elke golf vergroot het werk dat door een menselijke jurist of compliance officer afgetekend moet worden. De Brusselse EU-praktijk is een van Europa's grootste concentraties regulatorisch werk; AI verkort het onderzoek, maar de toezichthouder wil nog steeds een naam onder het memo.",
+          "België zit middenin drie regelgevende golven tegelijk — de EU AI Act, DORA voor financiële diensten en de post-AVG handhaving door GBA/APD. Elke golf vergroot het werk dat door een menselijke jurist of compliance officer moet worden goedgekeurd. De Brusselse EU-praktijk is een van Europa's grootste concentraties regelgevend werk; AI verkort het onderzoek, maar de toezichthouder wil nog steeds een naam onder het memo.",
         links: [
           { label: "EU AI Act overzicht", href: "https://artificialintelligenceact.eu/" },
           { label: "DORA — ESMA", href: "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/digital-operational-resilience-act-dora" },
@@ -466,8 +466,8 @@ const content: Record<Lang, Content> = {
     s5Headline: "Vier eerlijke tegenargumenten.",
     objections: [
       { title: "De vraag kan verzadigd raken", body: "Elastische vraag is een empirische kwestie, geen theorema. Als de wereld eigenlijk geen 10× méér juridische memo's, marketingtekst of vertaalde PDF's wil, krimpt een lagere eenheidsprijs gewoon de loonsom." },
-      { title: "Complementariteit overleeft het volgende model misschien niet", body: "Als de AI ook goed genoeg wordt om de review- en integratiestap te doen, verdwijnt de menselijke bottleneck volledig uit het beroep. Dat is het agentic-scenario en is het sterkste argument tegen een Jevons-lezing." },
-      { title: "Verdelingspijn is reëel, ook als de totalen groeien", body: "Juniorcohorten, nichespecialisten en werknemers zonder de tools, de taal of de opleiding om de nieuwe workflow te beheersen, kunnen flink verliezen terwijl de aggregaten er gezond uitzien. Een macro-Jevons-effect is een schrale troost voor een 24-jarige wiens instapfunctie net is verdwenen." },
+      { title: "Complementariteit overleeft het volgende model misschien niet", body: "Als de AI ook goed genoeg wordt om de review- en integratiestap te doen, verdwijnt de menselijke bottleneck volledig uit het beroep. Dat is het scenario met autonome AI-agenten en het sterkste argument tegen een Jevons-lezing." },
+      { title: "Verdelingspijn is reëel, ook als de totalen groeien", body: "Juniorcohorten, nichespecialisten en werknemers zonder de tools, de taal of de opleiding om de nieuwe werkwijze te beheersen, kunnen flink verliezen terwijl de aggregaten er gezond uitzien. Een macro-Jevons-effect is een schrale troost voor een 24-jarige wiens instapfunctie net is verdwenen." },
       { title: "Aanpassing gaat traag", body: "Zelfs in de optimistische lezing zit er jaren — geen kwartalen — tussen de ontslagaankondiging en de nieuwe aanwervingsgolf. Het Belgische sociaal model maakt die kloof leefbaarder dan elders, maar wist hem niet uit." },
     ],
     s6Eyebrow: "Sectie 06 · Synthese",
@@ -496,7 +496,7 @@ const content: Record<Lang, Content> = {
   },
 
   fr: {
-    eyebrow: "Votre risque emploi · Belgique · Thèse inverse",
+    eyebrow: "Risque pour votre emploi · Belgique · Thèse inverse",
     h1Pre: "Et si l'IA faisait ",
     h1Accent: "grandir",
     h1Post: " les emplois qu'elle semble tuer ?",
