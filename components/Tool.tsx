@@ -52,6 +52,18 @@ function pressure(
   return Math.max(0, Math.min(1, (score / 100) * adoption * horizonFactor));
 }
 
+function scoreRange(score: number, margin: number) {
+  return {
+    low: Math.max(0, Math.round(score - margin)),
+    base: Math.round(score),
+    high: Math.min(100, Math.round(score + margin)),
+  };
+}
+
+function rangeText(range: { low: number; base: number; high: number }) {
+  return `${range.low} / ${range.base} / ${range.high}`;
+}
+
 export default function Tool({ features }: Props) {
   const lang = useLang();
   const numFmt = lang === "fr" ? "fr-BE" : lang === "nl" ? "nl-BE" : "en-BE";
@@ -131,6 +143,32 @@ export default function Tool({ features }: Props) {
       ? (selectedProvince.exposure + selectedOccupation.exposure) / 2
       : 0;
   const personalPressure = pressure(personalExposure, adoption, horizon);
+  const provinceSensitivity = selectedProvince
+    ? scoreRange(selectedProvince.exposure, 6)
+    : null;
+  const occupationSensitivity = selectedOccupation
+    ? scoreRange(selectedOccupation.exposure, 8)
+    : null;
+  const pressureSensitivity =
+    provinceSensitivity && occupationSensitivity
+      ? {
+          low: Math.round(
+            pressure(
+              (provinceSensitivity.low + occupationSensitivity.low) / 2,
+              adoption,
+              horizon
+            ) * 100
+          ),
+          base: Math.round(personalPressure * 100),
+          high: Math.round(
+            pressure(
+              (provinceSensitivity.high + occupationSensitivity.high) / 2,
+              adoption,
+              horizon
+            ) * 100
+          ),
+        }
+      : null;
 
   const countryAtRiskM = useMemo(() => {
     // Weighted average pressure across occupation groups, times total workforce.
@@ -534,6 +572,37 @@ export default function Tool({ features }: Props) {
                   />
                 </div>
               </div>
+              <div className="mt-4 grid gap-4 rounded-sm border border-white/10 bg-white/[0.03] p-4 text-sm text-white/60 lg:grid-cols-[1fr,1.2fr]">
+                <div>
+                  <div className="mb-2 text-xs uppercase tracking-[0.25em] text-white/40">
+                    {tr(t.toolSensitivityTitle, lang)}
+                  </div>
+                  <p>{tr(t.toolSensitivityIntro, lang)}</p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <BreakdownItem
+                    label={tr(t.toolSensitivityProvince, lang)}
+                    value={rangeText(provinceSensitivity!)}
+                    hint={tr(t.toolSensitivityScale, lang)}
+                  />
+                  <BreakdownItem
+                    label={tr(t.toolSensitivityOccupation, lang)}
+                    value={rangeText(occupationSensitivity!)}
+                    hint={tr(t.toolSensitivityScale, lang)}
+                  />
+                  <BreakdownItem
+                    label={tr(t.toolSensitivityPressure, lang)}
+                    value={`${pressureSensitivity!.low}% / ${pressureSensitivity!.base}% / ${pressureSensitivity!.high}%`}
+                    hint={tr(t.toolSensitivityLowBaseHigh, lang)}
+                  />
+                </div>
+              </div>
+              <div className="mt-4 rounded-sm border border-white/10 bg-white/[0.03] p-4 text-sm text-white/60">
+                <div className="mb-2 text-xs uppercase tracking-[0.25em] text-white/40">
+                  {tr(t.toolLimitsTitle, lang)}
+                </div>
+                <p>{tr(t.toolLimitsBody, lang)}</p>
+              </div>
             </>
           ) : (
             <div className="flex flex-wrap gap-3 text-sm">
@@ -555,13 +624,22 @@ export default function Tool({ features }: Props) {
   );
 }
 
-function BreakdownItem({ label, value }: { label: string; value: string }) {
+function BreakdownItem({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string;
+  hint?: string;
+}) {
   return (
     <div>
       <div className="text-xs uppercase tracking-widest text-white/40">
         {label}
       </div>
       <div className="numeric mt-1 text-base text-white">{value}</div>
+      {hint ? <div className="mt-1 text-xs text-white/40">{hint}</div> : null}
     </div>
   );
 }
