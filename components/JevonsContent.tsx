@@ -344,14 +344,14 @@ const content: Record<Lang, Content> = {
       "De output per werknemer springt meetbaar omhoog (gemergde PR's, opgeloste tickets, vertaalde woorden, gereviewde contracten).",
       "De eenheidsprijs van de output daalt — of de kwaliteit bij gelijke prijs stijgt sterk.",
       "Het volume stijgt sneller dan de prijs daalt. De totale uitgaven aan de taak nemen toe. (Het diagnostische Jevons-signaal.)",
-      "Vacatures hervormen, ze krimpen niet alleen: senior \"eigenaar van de AI-workflow\"-rollen stijgen, smalle producentenrollen dalen, juniors worden uitgeknepen.",
-      "Aanverwante beroepen boomen (meer code → meer PM's, data-engineers, security, compliance).",
-      "De lonen van de overlevenden stijgen, zelfs als het personeelsbestand in de smalle specialisatie stabiliseert.",
+      "Vacatures hervormen zich, ze krimpen niet alleen: senior \"eigenaar van de AI-workflow\"-rollen stijgen, gespecialiseerde producentenrollen dalen, juniors worden uitgeknepen.",
+      "Aanverwante beroepen schieten omhoog (meer code → meer PM's, data-engineers, security, compliance).",
+      "De lonen van de overlevenden stijgen, zelfs als het personeelsbestand in de nichespecialisatie stabiliseert.",
     ],
     s4Eyebrow: "Sectie 04 · Waar het signaal opduikt — in België",
     s4Headline: "Zeven Belgische beroepenclusters om eerst in de gaten te houden.",
     s4Intro:
-      "Elk ervan is sterk AI-blootgesteld, kent een elastische vraag en heeft structurele Belgische diepte. Het label geeft aan hoe zichtbaar het Jevons-vormige signaal er vandaag is.",
+      "Elk ervan is sterk blootgesteld aan AI, kent een elastische vraag en heeft structurele Belgische diepte. Het label geeft aan hoe zichtbaar het Jevons-achtige signaal er vandaag is.",
     signalEarly: "Vroeg signaal",
     signalMixed: "Gemengd signaal",
     signalNone: "Nog niet zichtbaar",
@@ -449,9 +449,9 @@ const content: Record<Lang, Content> = {
         signal: "none",
         who: "Radiologie, pathologie, huisartsen, hoofdverpleegkundigen in de netwerken van UZ Leuven, UZ Brussel, UZA, CHU Liège en Cliniques Saint-Luc.",
         what:
-          "AI-ondersteuning per scan en per dossier is reëel en groeit. Maar de Belgische vergrijzing en de structurele tekorten aan huisartsen en verpleegkundigen drijven de vraag sneller op dan welke denkbare efficiëntiewinst dan ook ze naar beneden duwt.",
+          "AI-ondersteuning per scan en per dossier is reëel en groeit. Maar de Belgische vergrijzing en de structurele tekorten aan huisartsen en verpleegkundigen drijven de vraag sneller op dan welke denkbare efficiëntiewinst dan ook hem naar beneden kan duwen.",
         belgian:
-          "RIZIV/INAMI-data en het Federaal Kenniscentrum (KCE) blijven tekorten projecteren — geen overschotten — voor de meeste klinische rollen tot 2030. Domus Medica en de SSMG signaleren een verergerend huisartsentekort, vooral in Wallonië. AI is hier een ontlastingsklep op de werkdruk, geen vervanger voor mensen — het schoolvoorbeeld van Jevons gedomineerd door onderliggende vraaggroei.",
+          "RIZIV/INAMI-data en het Federaal Kenniscentrum (KCE) blijven tekorten voorspellen — geen overschotten — voor de meeste klinische rollen tot 2030. Domus Medica en de SSMG signaleren een verergerend huisartsentekort, vooral in Wallonië. AI is hier een uitlaatklep voor de werkdruk, geen vervanger voor mensen — het schoolvoorbeeld van een Jevons-effect dat gedomineerd wordt door onderliggende vraaggroei.",
         links: [
           { label: "RIZIV / INAMI", href: "https://www.riziv-inami.fgov.be/" },
           { label: "KCE — Federaal Kenniscentrum", href: "https://kce.fgov.be/en" },
@@ -461,13 +461,13 @@ const content: Record<Lang, Content> = {
       },
     ],
     s4Caveat:
-      "Voorbehoud: op macroniveau tonen noch de Belgische LFS 2025 noch de OECD Employment Outlook 2025 al een netto AI-jobverlies op het niveau van beroepsgroepen. Dat is consistent met een trage Jevons-ontvouwing én met uitgestelde verdringing. De sectorsignalen hierboven zijn de plek waar dit eerst onderscheidbaar wordt.",
+      "Voorbehoud: op macroniveau tonen noch de Belgische LFS 2025 noch de OECD Employment Outlook 2025 al een netto AI-jobverlies op het niveau van beroepsgroepen. Dat strookt met een trage Jevons-uitwerking én met uitgestelde verdringing. De sectorsignalen hierboven zijn de plek waar dit eerst zichtbaar wordt.",
     s5Eyebrow: "Sectie 05 · Waar het Jevons-argument breekt",
     s5Headline: "Vier eerlijke tegenargumenten.",
     objections: [
       { title: "De vraag kan verzadigd raken", body: "Elastische vraag is een empirische kwestie, geen theorema. Als de wereld eigenlijk geen 10× méér juridische memo's, marketingtekst of vertaalde PDF's wil, krimpt een lagere eenheidsprijs gewoon de loonsom." },
       { title: "Complementariteit overleeft het volgende model misschien niet", body: "Als de AI ook goed genoeg wordt om de review- en integratiestap te doen, verdwijnt de menselijke bottleneck volledig uit het beroep. Dat is het agentic-scenario en is het sterkste argument tegen een Jevons-lezing." },
-      { title: "Verdelingspijn is reëel, ook als de totalen groeien", body: "Junior cohorten, smalle specialisten en werknemers zonder de tools, taal of opleiding om de nieuwe workflow te berijden, kunnen flink verliezen terwijl de aggregaten er gezond uitzien. Een macro-Jevons-effect is een schrale troost voor een 24-jarige wiens instaprol net is verdwenen." },
+      { title: "Verdelingspijn is reëel, ook als de totalen groeien", body: "Juniorcohorten, nichespecialisten en werknemers zonder de tools, de taal of de opleiding om de nieuwe workflow te beheersen, kunnen flink verliezen terwijl de aggregaten er gezond uitzien. Een macro-Jevons-effect is een schrale troost voor een 24-jarige wiens instapfunctie net is verdwenen." },
       { title: "Aanpassing gaat traag", body: "Zelfs in de optimistische lezing zit er jaren — geen kwartalen — tussen de ontslagaankondiging en de nieuwe aanwervingsgolf. Het Belgische sociaal model maakt die kloof leefbaarder dan elders, maar wist hem niet uit." },
     ],
     s6Eyebrow: "Sectie 06 · Synthese",
@@ -475,7 +475,7 @@ const content: Record<Lang, Content> = {
     phase1: {
       eyebrow: "Fase 01 · Vandaag",
       title: "De zichtbare, pijnlijke fase.",
-      p1: "Bedrijven boeken de productiviteitswinst als kostenreductie. Ontslagen vallen in de hoge AIOE-rollen. Juniors worden eerst geschrapt. De nieuwsstroom wordt gedomineerd door verdringingsverhalen.",
+      p1: "Bedrijven verzilveren de productiviteitswinst als kostenbesparing. Ontslagen treffen vooral de rollen met hoge AIOE-blootstelling. Juniors worden als eersten geschrapt. De nieuwsstroom wordt gedomineerd door verdringingsverhalen.",
       p2: "",
     },
     phase1HerePre: "België zit hier vandaag. De ",
@@ -485,7 +485,7 @@ const content: Record<Lang, Content> = {
       eyebrow: "Fase 02 · De Jevons-fase",
       title: "Prijzen dalen. Volumes exploderen. Rollen herorganiseren zich.",
       p1: "Het personeelsbestand in de getroffen beroepen stabiliseert of groeit, maar de samenstelling verschuift permanent naar senior, integratief en verantwoordelijkheidsdragend werk.",
-      p2: "Of België drie of vijftien jaar tussen de twee fasen doorbrengt — en hoeveel werknemers door de gleuf vallen — is geen eigenschap van de technologie. Het is een beleidskeuze en een institutionele keuze.",
+      p2: "Of België drie of vijftien jaar tussen de twee fasen doorbrengt — en hoeveel werknemers tussen wal en schip vallen — is geen kenmerk van de technologie. Het is een beleidskeuze en een institutionele keuze.",
     },
     s7Eyebrow: "Sectie 07 · Verder lezen",
     s7Headline: "De papers en primaire bronnen achter deze pagina.",
@@ -552,9 +552,9 @@ const content: Record<Lang, Content> = {
       "La production par travailleur saute mesurablement (PR mergées, tickets résolus, mots traduits, contrats revus).",
       "Le prix unitaire de la production baisse — ou la qualité à prix constant grimpe nettement.",
       "Le volume monte plus vite que le prix ne baisse. La dépense totale sur la tâche augmente. (Le signal diagnostique de Jevons.)",
-      "Les offres d'emploi se reforment, elles ne se contentent pas de diminuer : les rôles seniors \"propriétaire du flux IA\" montent, les rôles producteurs étroits chutent, les juniors sont compressés.",
-      "Les métiers adjacents explosent (plus de code → plus de PM, data engineers, sécurité, conformité).",
-      "Les salaires des survivants augmentent même si l'effectif dans la spécialité étroite plafonne.",
+      "Les offres d'emploi se reconfigurent, elles ne se contentent pas de diminuer : les postes seniors de \"pilote du flux IA\" se multiplient, les rôles de production spécialisés reculent, les juniors sont compressés.",
+      "Les métiers adjacents explosent (plus de code → plus de chefs de projet, data engineers, sécurité, conformité).",
+      "Les salaires des survivants augmentent même si les effectifs dans la spécialité de niche plafonnent.",
     ],
     s4Eyebrow: "Section 04 · Là où le signal apparaît — en Belgique",
     s4Headline: "Sept clusters professionnels belges à surveiller en premier.",
@@ -599,9 +599,9 @@ const content: Record<Lang, Content> = {
         signal: "mixed",
         who: "Proximus, Telenet, Orange Belgium, KBC, Belfius, ING Belgium, AG Insurance, Engie BE — service desks de niveaux 1 et 2.",
         what:
-          "Klarna, IKEA, BT et d'autres ont annoncé de fortes déflexions vers des agents IA ; Klarna est ensuite revenu sur une partie de ses propos. L'emploi total dans le support ne s'est pas effondré, mais la composition des rôles remonte la chaîne de valeur. Jevons stabilisé ou simple transition : la question reste ouverte.",
+          "Klarna, IKEA, BT et d'autres ont annoncé que de larges volumes d'appels étaient désormais traités par des agents IA ; Klarna est ensuite revenu sur une partie de ses propos. L'emploi total dans le support ne s'est pas effondré, mais la composition des rôles remonte la chaîne de valeur. Jevons à l'équilibre ou simple transition : la question reste ouverte.",
         belgian:
-          "Proximus a publiquement placé l'IA au cœur de son plan de transformation et a déjà acté un impact emploi sur les rôles en contact avec la clientèle. L'assistant Kate de KBC tourne depuis des années et KBC continue d'embaucher du personnel customer experience autour de lui. Telenet, Belfius et ING Belgium ont déployé des assistants IA générative en 2024–2025. Le motif belge précoce : augmentation côté senior et compression au tier 1 — visible dans la bande des plans sociaux sur la page d'accueil.",
+          "Proximus a publiquement placé l'IA au cœur de son plan de transformation et a déjà acté un impact emploi sur les rôles en contact avec la clientèle. L'assistant Kate de KBC tourne depuis des années et KBC continue d'embaucher du personnel d'expérience client autour de lui. Telenet, Belfius et ING Belgium ont déployé des assistants d'IA générative en 2024–2025. Le schéma belge qui se dessine : augmentation côté senior et compression au tier 1 — visible dans la bande des plans sociaux sur la page d'accueil.",
         links: [
           { label: "Proximus newsroom", href: "https://www.proximus.com/news.html" },
           { label: "KBC newsroom — Kate", href: "https://newsroom.kbc.com/" },
@@ -657,9 +657,9 @@ const content: Record<Lang, Content> = {
         signal: "none",
         who: "Radiologie, pathologie, médecins généralistes, cadres infirmiers dans les réseaux de UZ Leuven, UZ Brussel, UZA, CHU Liège et Cliniques Saint-Luc.",
         what:
-          "L'assistance IA par scanner et par dossier est réelle et croissante. Mais la démographie vieillissante de la Belgique et la pénurie structurelle de généralistes et d'infirmiers poussent la demande à la hausse plus vite que toute efficience plausible ne la pousse à la baisse.",
+          "L'assistance par IA, par examen d'imagerie et par dossier patient, est réelle et croissante. Mais le vieillissement de la population belge et la pénurie structurelle de généralistes et d'infirmiers poussent la demande à la hausse plus vite que tout gain d'efficacité plausible ne pourrait la pousser à la baisse.",
         belgian:
-          "Les données INAMI/RIZIV et le Centre Fédéral d'Expertise (KCE) continuent de projeter des pénuries — pas des excédents — sur la plupart des rôles cliniques jusqu'en 2030. Domus Medica et la SSMG signalent une pénurie de généralistes qui s'aggrave, surtout en Wallonie. L'IA est ici une soupape sur la charge de travail, pas un substitut aux effectifs — le cas d'école d'un Jevons dominé par la croissance sous-jacente de la demande.",
+          "Les données INAMI/RIZIV et le Centre Fédéral d'Expertise (KCE) continuent de projeter des pénuries — pas des excédents — sur la plupart des rôles cliniques jusqu'en 2030. Domus Medica et la SSMG signalent une pénurie de généralistes qui s'aggrave, surtout en Wallonie. L'IA joue ici le rôle de soupape sur la charge de travail, et non de substitut aux effectifs — le cas d'école d'un effet Jevons dominé par la croissance sous-jacente de la demande.",
         links: [
           { label: "RIZIV / INAMI", href: "https://www.riziv-inami.fgov.be/" },
           { label: "KCE — Centre Fédéral d'Expertise", href: "https://kce.fgov.be/en" },
@@ -669,13 +669,13 @@ const content: Record<Lang, Content> = {
       },
     ],
     s4Caveat:
-      "Réserve : au niveau macro, ni l'enquête sur les forces de travail belge 2025 ni l'OECD Employment Outlook 2025 ne montrent encore l'IA comme perte nette d'emplois au niveau des grands groupes professionnels. Cela est compatible avec un déploiement lent du Jevons et avec un déplacement différé. Les signaux sectoriels ci-dessus sont l'endroit où cela deviendra distinguable en premier.",
+      "Réserve : au niveau macroéconomique, ni l'enquête sur les forces de travail belge 2025 ni l'OECD Employment Outlook 2025 ne montrent encore d'effet net de l'IA en termes de pertes d'emplois au niveau des grands groupes professionnels. C'est compatible avec une diffusion lente d'un effet Jevons comme avec un déplacement différé. Les signaux sectoriels ci-dessus sont l'endroit où cela deviendra perceptible en premier.",
     s5Eyebrow: "Section 05 · Là où l'argument Jevons casse",
     s5Headline: "Quatre objections honnêtes.",
     objections: [
       { title: "La demande peut être saturable", body: "L'élasticité de la demande est une question empirique, pas un théorème. Si le monde ne veut pas vraiment 10× plus de mémos juridiques, de copy marketing ou de PDF traduits, un coût unitaire plus bas ne fait que rétrécir la masse salariale." },
       { title: "La complémentarité peut ne pas survivre au prochain modèle", body: "Si l'IA devient assez bonne pour faire aussi l'étape de revue et d'intégration, le goulot humain sort entièrement du métier. C'est le scénario agentique et c'est l'argument le plus fort contre une lecture Jevons." },
-      { title: "La douleur distributive est réelle même si les totaux croissent", body: "Les cohortes juniors, les spécialistes étroits et les travailleurs sans l'outillage, la langue ou la formation pour monter dans le nouveau flux peuvent perdre lourdement pendant que les agrégats ont l'air sains. Un effet Jevons macro est une maigre consolation pour un jeune de 24 ans dont le rôle d'entrée vient de disparaître." },
+      { title: "La douleur distributive est réelle même si les totaux croissent", body: "Les cohortes juniors, les spécialistes pointus et les travailleurs qui n'ont ni les outils, ni la langue, ni la formation pour s'approprier le nouveau flux de travail peuvent perdre lourdement pendant que les agrégats ont l'air sains. Un effet Jevons macroéconomique est une maigre consolation pour un jeune de 24 ans dont le poste d'entrée vient de disparaître." },
       { title: "L'ajustement est lent", body: "Même dans la lecture optimiste, l'écart entre l'annonce de licenciements et la nouvelle vague d'embauches se compte en années, pas en trimestres. Le modèle social belge rend cet écart plus survivable qu'ailleurs — mais ne l'efface pas." },
     ],
     s6Eyebrow: "Section 06 · Synthèse",
@@ -683,7 +683,7 @@ const content: Record<Lang, Content> = {
     phase1: {
       eyebrow: "Phase 01 · Aujourd'hui",
       title: "La phase visible et douloureuse.",
-      p1: "Les entreprises comptabilisent le gain de productivité comme réduction de coûts. Les licenciements tombent dans les rôles à fort AIOE. Les juniors sont les premiers coupés. Le cycle médiatique est dominé par les histoires de remplacement.",
+      p1: "Les entreprises convertissent le gain de productivité en réduction de coûts. Les licenciements frappent surtout les rôles à fort AIOE. Les juniors sont les premiers à passer à la trappe. Le cycle médiatique est dominé par les histoires de remplacement.",
       p2: "",
     },
     phase1HerePre: "La Belgique en est là aujourd'hui. La ",
@@ -692,8 +692,8 @@ const content: Record<Lang, Content> = {
     phase2: {
       eyebrow: "Phase 02 · La phase Jevons",
       title: "Les prix tombent. Les volumes explosent. Les rôles se reconstruisent.",
-      p1: "Les effectifs dans les métiers concernés se stabilisent ou grandissent, mais la composition glisse durablement vers le travail senior, intégrateur, porteur de responsabilité.",
-      p2: "Que la Belgique passe trois ans ou quinze entre les deux phases — et combien de travailleurs tombent dans la faille — n'est pas une propriété de la technologie. C'est un choix politique et institutionnel.",
+      p1: "Les effectifs dans les métiers concernés se stabilisent ou augmentent, mais la composition glisse durablement vers du travail senior, d'intégration et à responsabilité.",
+      p2: "Que la Belgique passe trois ans ou quinze entre les deux phases — et combien de travailleurs passent entre les mailles du filet — ne dépend pas de la technologie. C'est un choix politique et institutionnel.",
     },
     s7Eyebrow: "Section 07 · Pour aller plus loin",
     s7Headline: "Les articles et sources primaires derrière cette page.",
