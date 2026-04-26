@@ -1035,18 +1035,13 @@ export default function JevonsContent() {
               </SourceLink>
             </li>
             <li>
-              <SourceLink href="https://www.anthropic.com/research/economic-index">
+              <SourceLink href="https://www.anthropic.com/news/the-anthropic-economic-index">
                 Anthropic (2025) — Economic Index
               </SourceLink>
             </li>
             <li>
               <SourceLink href="https://www.oecd.org/en/publications/oecd-employment-outlook-2025_194a947b-en.html">
                 OECD Employment Outlook 2025
-              </SourceLink>
-            </li>
-            <li>
-              <SourceLink href="https://www.stlouisfed.org/on-the-economy/2025/sep/recent-graduates-labor-market-outcomes">
-                St. Louis Fed (2025) — entry-level CS outcomes
               </SourceLink>
             </li>
             <li>
@@ -1061,8 +1056,8 @@ export default function JevonsContent() {
           </p>
           <ul className="mt-4 grid gap-x-10 gap-y-3 font-mono text-sm text-white/70 md:grid-cols-2">
             <li>
-              <SourceLink href="https://www.nbb.be/en/publications-and-research/working-papers">
-                NBB — Working Papers (productivity &amp; AI)
+              <SourceLink href="https://www.nbb.be/en/publications-research/research-and-academic-cooperation">
+                NBB — Research &amp; academic cooperation
               </SourceLink>
             </li>
             <li>
@@ -1071,7 +1066,7 @@ export default function JevonsContent() {
               </SourceLink>
             </li>
             <li>
-              <SourceLink href="https://www.plan.be/databases/data-26-en-employment_by_branch_and_status">
+              <SourceLink href="https://www.plan.be/">
                 Federaal Planbureau / Bureau du Plan
               </SourceLink>
             </li>
@@ -1086,18 +1081,8 @@ export default function JevonsContent() {
               </SourceLink>
             </li>
             <li>
-              <SourceLink href="https://www.acerta.be/en/about-acerta/press">
-                Acerta — HR market reports
-              </SourceLink>
-            </li>
-            <li>
-              <SourceLink href="https://www.sdworx.com/en/press">
-                SD Worx — HR market reports
-              </SourceLink>
-            </li>
-            <li>
-              <SourceLink href="https://www.eurofound.europa.eu/en/country/belgium">
-                Eurofound — Belgium country page
+              <SourceLink href="https://www.eurofound.europa.eu/en">
+                Eurofound
               </SourceLink>
             </li>
           </ul>

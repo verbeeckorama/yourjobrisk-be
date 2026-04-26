@@ -783,7 +783,7 @@ export default function MethodologyContent() {
             — AI chapters on exposure, adoption and workplace use.
           </li>
           <li>
-            <SourceLink href="https://www.anthropic.com/research/economic-index">
+            <SourceLink href="https://www.anthropic.com/news/the-anthropic-economic-index">
               Anthropic (2025) — Economic Index
             </SourceLink>{" "}
             — task-level analysis of what Claude is actually used for.
@@ -816,8 +816,8 @@ export default function MethodologyContent() {
             (NUTS-2, 2024).
           </li>
           <li>
-            <SourceLink href="https://ec.europa.eu/eurostat/web/nuts/background">
-              Eurostat — NUTS-2 2021 classification
+            <SourceLink href="https://ec.europa.eu/eurostat/web/nuts">
+              Eurostat — NUTS classification
             </SourceLink>{" "}
             ·{" "}
             <SourceLink href="https://github.com/eurostat/Nuts2json">
@@ -850,8 +850,8 @@ export default function MethodologyContent() {
             <SourceLink href="https://www.hln.be/">HLN</SourceLink>
           </li>
           <li>
-            <SourceLink href="https://www.eurofound.europa.eu/en/observatories/emcc/european-restructuring-monitor">
-              Eurofound — European Restructuring Monitor (ERM)
+            <SourceLink href="https://www.eurofound.europa.eu/en/topics/restructuring">
+              Eurofound — Restructuring topic
             </SourceLink>
           </li>
         </ul>
