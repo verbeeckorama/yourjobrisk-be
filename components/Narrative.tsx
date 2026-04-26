@@ -29,6 +29,18 @@ export default function Narrative() {
             unusual levers for a managed transition — if they are used
             early, not after the layoff announcements.
           </p>
+          <p className="text-white/60">
+            Counter-view:{" "}
+            <a
+              href="/jevons"
+              className="text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+            >
+              what if AI triggers a Jevons paradox in cognitive work?
+            </a>{" "}
+            Cheaper tasks, more total demand, and the exposed occupations
+            grow rather than shrink — the case, the early signs, and the
+            Belgian jobs to watch first.
+          </p>
         </div>
       </div>
     </section>

@@ -118,15 +118,6 @@ export default function Tool({ features }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-6 pt-10 pb-24 md:pt-16">
-      <nav className="mb-8 flex items-center justify-between text-xs uppercase tracking-[0.25em] text-white/50">
-        <Link href="/" className="hover:text-white">
-          ← Your Job Risk · Belgium
-        </Link>
-        <Link href="/methodology" className="hover:text-white">
-          Methodology →
-        </Link>
-      </nav>
-
       <header className="max-w-3xl">
         <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
           The Tool

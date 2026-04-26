@@ -9,20 +9,10 @@ export default function Hero() {
   const totalLayoffs = layoffs.reduce((s, l) => s + l.roles, 0);
   return (
     <section className="relative border-b border-white/10">
-      <div className="mx-auto max-w-6xl px-6 pt-24 pb-20 md:pt-32 md:pb-28">
-        <div className="mb-6 flex items-center justify-between">
-          <p className="text-xs uppercase tracking-[0.25em] text-white/50">
-            Your Job Risk · Belgium edition
-          </p>
-          <div className="flex items-center gap-5 text-xs uppercase tracking-[0.25em] text-white/50">
-            <Link href="/tool" className="hover:text-accent">
-              Tool →
-            </Link>
-            <Link href="/methodology" className="hover:text-accent">
-              Methodology →
-            </Link>
-          </div>
-        </div>
+      <div className="mx-auto max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+        <p className="mb-6 text-xs uppercase tracking-[0.25em] text-white/50">
+          Your Job Risk · Belgium edition
+        </p>
         <h1 className="numeric text-5xl font-semibold leading-[0.95] md:text-7xl">
           {totalLayoffs.toLocaleString("en-BE")} jobs.{" "}
           <span className="text-white/60">{layoffs.length} employers.</span>{" "}

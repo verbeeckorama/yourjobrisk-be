@@ -40,6 +40,15 @@ export default function Footer() {
               depends on firm strategy, labour-market institutions and
               policy. These figures are indicative, not forecasts.
             </p>
+            <p className="mt-3 text-white/50">
+              Counter-view:{" "}
+              <a
+                href="/jevons"
+                className="text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+              >
+                an AI Jevons paradox?
+              </a>
+            </p>
           </div>
         </div>
         <div className="mt-12 border-t border-white/10 pt-6 text-xs text-white/40">

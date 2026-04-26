@@ -2,20 +2,32 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Methodology · Your Job Risk Belgium",
+  title: "Methodology — how the Belgian AI-exposure scores are built",
   description:
-    "How the Belgian AI-exposure scores, occupation rankings and layoff classifications on this site are built.",
+    "Province exposure scores, occupation rankings (ISCO-08) and layoff classifications for Belgium, fully sourced. AIOE (Felten, Raj & Rock 2021) cross-checked with Eloundou et al. 2023, ILO 2025, OECD Employment Outlook 2025 and the Anthropic Economic Index. Belgian employment from Statbel LFS 2024.",
+  keywords: [
+    "AIOE",
+    "Felten Raj Rock",
+    "ISCO-08",
+    "Statbel LFS 2024",
+    "AI exposure methodology",
+    "OECD Employment Outlook 2025",
+    "ILO Generative AI",
+    "Anthropic Economic Index",
+    "Belgian labour market",
+  ],
+  alternates: { canonical: "/methodology" },
+  openGraph: {
+    title: "Methodology — Your Job Risk Belgium",
+    description:
+      "How province scores, occupation rankings and layoff classifications are built, with every source.",
+    url: "/methodology",
+  },
 };
 
 export default function MethodologyPage() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24 md:py-32">
-      <nav className="mb-12 text-xs uppercase tracking-[0.25em] text-white/50">
-        <Link href="/" className="hover:text-white">
-          ← Back to Your Job Risk · Belgium
-        </Link>
-      </nav>
-
+    <main className="mx-auto max-w-3xl px-6 py-20 md:py-28">
       <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/50">
         Methodology
       </p>

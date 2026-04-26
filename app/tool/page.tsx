@@ -3,9 +3,24 @@ import Tool from "@/components/Tool";
 import { loadBelgiumFeatures } from "@/lib/geoData";
 
 export const metadata: Metadata = {
-  title: "The Tool · Your Job Risk Belgium",
+  title: "Check my AI risk — Belgian AI-exposure tool",
   description:
-    "Interactive Belgian AI-exposure explorer: pick a province, pick your occupation, pick an adoption scenario.",
+    "Pick your Belgian province, your ISCO occupation group and an AI-adoption scenario, then see your modelled task-pressure estimate. A scenario explorer for the Belgian labour market — not a forecast.",
+  keywords: [
+    "AI risk Belgium",
+    "AI exposure tool",
+    "check my job AI",
+    "AI banen risico",
+    "AI emploi risque Belgique",
+    "ISCO Belgium",
+  ],
+  alternates: { canonical: "/tool" },
+  openGraph: {
+    title: "Check my AI risk — Belgium",
+    description:
+      "Pick a province, pick a role, see the number. Belgian AI-exposure scenario explorer.",
+    url: "/tool",
+  },
 };
 
 export default function ToolPage() {
