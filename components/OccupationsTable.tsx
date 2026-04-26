@@ -8,10 +8,6 @@ import {
   t,
 } from "@/lib/i18n";
 
-function bar(score: number) {
-  return `${Math.min(100, score)}%`;
-}
-
 export default function OccupationsTable() {
   const lang = useLang();
   const numFmt = lang === "fr" ? "fr-BE" : lang === "nl" ? "nl-BE" : "en-BE";
@@ -61,12 +57,18 @@ export default function OccupationsTable() {
                     </td>
                     <td className="py-4 pr-4">
                       <div className="flex items-center gap-3">
-                        <div className="relative h-2 w-40 overflow-hidden rounded-sm bg-white/10">
-                          <div
-                            className="h-full bg-accent"
-                            style={{ width: bar(o.exposure) }}
+                        <svg
+                          viewBox="0 0 100 8"
+                          aria-hidden="true"
+                          className="h-2 w-40 overflow-hidden rounded-sm bg-white/10"
+                          preserveAspectRatio="none"
+                        >
+                          <rect
+                            width={Math.min(100, o.exposure)}
+                            height="8"
+                            className="fill-accent"
                           />
-                        </div>
+                        </svg>
                         <span className="numeric w-8 text-right text-white/80">
                           {o.exposure}
                         </span>

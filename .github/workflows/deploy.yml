@@ -36,12 +36,22 @@ jobs:
             echo "value=/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Detect site URL
+        id: siteurl
+        run: |
+          if [[ "${{ github.event.repository.name }}" == *.github.io ]]; then
+            echo "value=https://${{ github.repository_owner }}.github.io" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install deps
         run: npm ci
 
       - name: Build
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
+          NEXT_PUBLIC_SITE_URL: ${{ steps.siteurl.outputs.value }}
         run: npm run build
 
       - uses: actions/configure-pages@v5

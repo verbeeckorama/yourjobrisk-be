@@ -31,6 +31,14 @@ type Props = { features: FeatureCollection };
 const W = 720;
 const H = 520;
 
+function exposureBadgeClass(score: number) {
+  if (score >= 70) return "bg-[#ff4133] text-ink";
+  if (score >= 62) return "bg-[#d84a3e] text-white";
+  if (score >= 54) return "bg-[#aa453b] text-white";
+  if (score >= 46) return "bg-[#7d3f36] text-white";
+  return "bg-[#2a2a28] text-white";
+}
+
 // "Displacement pressure" model: the AI-era share of a worker's task basket
 // that is plausibly substitutable over a given horizon.
 //   pressure = exposure/100 × adoption × horizonFactor
@@ -181,6 +189,8 @@ export default function Tool({ features }: Props) {
             </span>
           </div>
           <input
+            aria-label={`${tr(t.toolHorizon, lang)}: ${horizon} ${tr(t.toolYears, lang)}`}
+            title={tr(t.toolHorizon, lang)}
             type="range"
             min={1}
             max={15}
@@ -304,13 +314,7 @@ export default function Tool({ features }: Props) {
           </svg>
           <div className="mt-3 flex items-center gap-3 text-xs text-white/50">
             <span>{tr(t.geoLower, lang)}</span>
-            <div
-              className="h-2 flex-1 rounded-sm"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgb(42,42,40), rgb(255,65,51))",
-              }}
-            />
+            <div className="exposure-gradient h-2 flex-1 rounded-sm" />
             <span>{tr(t.toolHigher, lang)}</span>
           </div>
         </div>
@@ -331,10 +335,9 @@ export default function Tool({ features }: Props) {
                   {provName(selectedProvince.nuts, selectedProvince.name)}
                 </h2>
                 <span
-                  className="numeric rounded-sm px-2 py-0.5 text-sm font-semibold"
-                  style={{
-                    background: colorForExposure(selectedProvince.exposure),
-                  }}
+                  className={`numeric rounded-sm px-2 py-0.5 text-sm font-semibold ${exposureBadgeClass(
+                    selectedProvince.exposure
+                  )}`}
                 >
                   {selectedProvince.exposure}
                 </span>
@@ -407,7 +410,7 @@ export default function Tool({ features }: Props) {
       <section
         id="my-risk"
         ref={step2Ref}
-        aria-disabled={selectedProvince ? "false" : "true"}
+        data-disabled={selectedProvince ? "false" : "true"}
         className={`mt-14 rounded-sm border bg-black/40 p-6 md:p-10 transition ${
           !selectedProvince
             ? "pointer-events-none border-white/10 opacity-50"
@@ -480,33 +483,58 @@ export default function Tool({ features }: Props) {
             {tr(t.toolYourEstimate, lang)}
           </div>
           {bothSelected ? (
-            <div className="grid gap-6 md:grid-cols-3">
-              <ResultStat
-                label={tr(t.toolCompositeExposure, lang)}
-                value={personalExposure.toFixed(0)}
-                hint={tr(t.toolCompositeHint, lang)}
-              />
-              <ResultStat
-                label={tr(t.toolTaskPressure, lang)}
-                value={`${Math.round(personalPressure * 100)}%`}
-                hint={tr(t.toolTaskPressureHint, lang)}
-                accent
-              />
-              <ResultStat
-                label={tr(t.toolScenarioLabel, lang)}
-                value={
-                  scenario === "slow"
-                    ? tr(t.toolScenarioSlowShort, lang)
-                    : scenario === "fast"
-                      ? tr(t.toolScenarioFastShort, lang)
-                      : tr(t.toolScenarioCurrentShort, lang)
-                }
-                hint={tr(t.toolHorizonShort, lang).replace(
-                  "{n}",
-                  String(horizon)
-                )}
-              />
-            </div>
+            <>
+              <div className="grid gap-6 md:grid-cols-3">
+                <ResultStat
+                  label={tr(t.toolCompositeExposure, lang)}
+                  value={personalExposure.toFixed(0)}
+                  hint={tr(t.toolCompositeHint, lang)}
+                />
+                <ResultStat
+                  label={tr(t.toolTaskPressure, lang)}
+                  value={`${Math.round(personalPressure * 100)}%`}
+                  hint={tr(t.toolTaskPressureHint, lang)}
+                  accent
+                />
+                <ResultStat
+                  label={tr(t.toolScenarioLabel, lang)}
+                  value={
+                    scenario === "slow"
+                      ? tr(t.toolScenarioSlowShort, lang)
+                      : scenario === "fast"
+                        ? tr(t.toolScenarioFastShort, lang)
+                        : tr(t.toolScenarioCurrentShort, lang)
+                  }
+                  hint={tr(t.toolHorizonShort, lang).replace(
+                    "{n}",
+                    String(horizon)
+                  )}
+                />
+              </div>
+              <div className="mt-6 rounded-sm border border-white/10 bg-white/[0.03] p-4 text-sm text-white/60">
+                <div className="mb-3 text-xs uppercase tracking-[0.25em] text-white/40">
+                  {tr(t.toolBreakdownTitle, lang)}
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <BreakdownItem
+                    label={tr(t.toolBreakdownProvince, lang)}
+                    value={`${selectedProvince!.exposure}/100`}
+                  />
+                  <BreakdownItem
+                    label={tr(t.toolBreakdownOccupation, lang)}
+                    value={`${selectedOccupation!.exposure}/100`}
+                  />
+                  <BreakdownItem
+                    label={tr(t.toolBreakdownAdoption, lang)}
+                    value={`${Math.round(adoption * 100)}%`}
+                  />
+                  <BreakdownItem
+                    label={tr(t.toolBreakdownHorizon, lang)}
+                    value={`${Math.round((Math.min(1, horizon / 15)) * 100)}%`}
+                  />
+                </div>
+              </div>
+            </>
           ) : (
             <div className="flex flex-wrap gap-3 text-sm">
               <StepPrompt done={Boolean(selectedProvince)} n={1}>
@@ -523,6 +551,17 @@ export default function Tool({ features }: Props) {
           {tr(t.toolDisclaimer, lang)}
         </p>
       </section>
+    </div>
+  );
+}
+
+function BreakdownItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-xs uppercase tracking-widest text-white/40">
+        {label}
+      </div>
+      <div className="numeric mt-1 text-base text-white">{value}</div>
     </div>
   );
 }

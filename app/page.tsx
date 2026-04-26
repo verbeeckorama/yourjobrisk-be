@@ -50,7 +50,7 @@ const websiteJsonLd = {
 
 export default function Page() {
   return (
-    <main>
+    <main id="main-content">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

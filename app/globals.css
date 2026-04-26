@@ -24,3 +24,29 @@ body {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 50;
+  transform: translateY(-150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  background: #ff4133;
+  color: #0a0a0a;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid #f5f3ee;
+  outline-offset: 2px;
+}
+
+.exposure-gradient {
+  background: linear-gradient(90deg, rgb(42, 42, 40), rgb(255, 65, 51));
+}

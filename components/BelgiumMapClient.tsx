@@ -15,6 +15,14 @@ import { provinceNameI18n, provinceNoteI18n, t } from "@/lib/i18n";
 
 type Props = { features: FeatureCollection };
 
+function exposureBadgeClass(score: number) {
+  if (score >= 70) return "bg-[#ff4133] text-ink";
+  if (score >= 62) return "bg-[#d84a3e] text-white";
+  if (score >= 54) return "bg-[#aa453b] text-white";
+  if (score >= 46) return "bg-[#7d3f36] text-white";
+  return "bg-[#2a2a28] text-white";
+}
+
 export default function BelgiumMap({ features }: Props) {
   const lang = useLang();
   const numFmt = lang === "fr" ? "fr-BE" : lang === "nl" ? "nl-BE" : "en-BE";
@@ -92,7 +100,7 @@ export default function BelgiumMap({ features }: Props) {
                         className="fill-white"
                         fontSize={10}
                         fontWeight={600}
-                        style={{ paintOrder: "stroke" }}
+                        paintOrder="stroke"
                         stroke="rgba(0,0,0,0.6)"
                         strokeWidth={2}
                       >
@@ -114,13 +122,7 @@ export default function BelgiumMap({ features }: Props) {
 
             <div className="mt-4 flex items-center gap-3 text-xs text-white/50">
               <span>{tr(t.geoLower, lang)}</span>
-              <div
-                className="h-2 flex-1 rounded-sm"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgb(42,42,40), rgb(255,65,51))",
-                }}
-              />
+              <div className="exposure-gradient h-2 flex-1 rounded-sm" />
               <span>{tr(t.geoHigher, lang)}</span>
             </div>
             <p className="mt-2 text-xs text-white/40">
@@ -150,8 +152,9 @@ export default function BelgiumMap({ features }: Props) {
                     {p.workers.toLocaleString(numFmt)}k
                   </span>
                   <span
-                    className="numeric w-12 rounded-sm px-2 py-0.5 text-right text-sm font-semibold text-white"
-                    style={{ background: colorFor(p.exposure) }}
+                    className={`numeric w-12 rounded-sm px-2 py-0.5 text-right text-sm font-semibold ${exposureBadgeClass(
+                      p.exposure
+                    )}`}
                   >
                     {p.exposure}
                   </span>

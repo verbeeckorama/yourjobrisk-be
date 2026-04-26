@@ -288,7 +288,7 @@ const content: Record<Lang, Content> = {
   },
 
   nl: {
-    eyebrow: "Jouw Job Risico · België · Tegenargument",
+    eyebrow: "Jouw jobrisico · België · Tegenargument",
     h1Pre: "Wat als AI de jobs die hij lijkt te killen, juist ",
     h1Accent: "doet groeien",
     h1Post: "?",
@@ -1037,6 +1037,16 @@ export default function JevonsContent() {
             <li>
               <SourceLink href="https://www.anthropic.com/news/the-anthropic-economic-index">
                 Anthropic (2025) — Economic Index
+              </SourceLink>
+            </li>
+            <li>
+              <SourceLink href="https://arxiv.org/abs/2503.04761">
+                Handa et al. (2025) — Claude task-use evidence
+              </SourceLink>
+            </li>
+            <li>
+              <SourceLink href="https://www.nber.org/papers/w32487">
+                Acemoglu (2024/2025) — Simple Macroeconomics of AI
               </SourceLink>
             </li>
             <li>

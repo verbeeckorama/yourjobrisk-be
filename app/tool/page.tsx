@@ -23,8 +23,41 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "Check my AI risk — Belgium",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      description:
+        "A Belgian AI-exposure scenario explorer that combines province, occupation group, adoption scenario and time horizon into a modelled task-pressure estimate.",
+      inLanguage: ["en", "nl", "fr"],
+      isPartOf: { "@type": "WebSite", name: "Your Job Risk · Belgium" },
+      mainEntityOfPage: "/tool",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "AI exposure", item: "/" },
+        { "@type": "ListItem", position: 2, name: "Risk tool", item: "/tool" },
+      ],
+    },
+  ],
+};
+
 export default function ToolPage() {
   // Loaded at build time; passed to the client component as a prop.
   const features = loadBelgiumFeatures();
-  return <Tool features={features} />;
+  return (
+    <main id="main-content">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Tool features={features} />
+    </main>
+  );
 }

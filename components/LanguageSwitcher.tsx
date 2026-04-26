@@ -18,7 +18,6 @@ export default function LanguageSwitcher() {
             key={l}
             type="button"
             onClick={() => setLang(l)}
-            aria-pressed={active}
             title={LANG_FULL[l]}
             className={`rounded-sm px-2 py-1 text-[10px] font-semibold uppercase tracking-widest transition ${
               active

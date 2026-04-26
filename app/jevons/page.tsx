@@ -71,13 +71,13 @@ const jsonLd = {
 
 export default function JevonsPage() {
   return (
-    <>
+    <main id="main-content">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <JevonsContent />
-    </>
+    </main>
   );
 }

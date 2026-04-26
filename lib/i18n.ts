@@ -41,7 +41,7 @@ type T = Record<Lang, string>;
 
 export const t = {
   // Site nav
-  navTagline: { en: "Your Job Risk", nl: "Jouw Job Risico", fr: "Votre risque emploi" } as T,
+  navTagline: { en: "Your Job Risk", nl: "Jouw jobrisico", fr: "Votre risque emploi" } as T,
   navMethodology: { en: "Methodology →", nl: "Methodologie →", fr: "Méthodologie →" } as T,
   navAiExposure: { en: "AI exposure", nl: "AI-blootstelling", fr: "Exposition à l'IA" } as T,
   navAiExposureBlurb: {
@@ -58,7 +58,7 @@ export const t = {
   navJevons: { en: "Jevons paradox?", nl: "Jevons-paradox?", fr: "Paradoxe de Jevons ?" } as T,
   navJevonsBlurb: {
     en: "The counter-view: more jobs, not fewer",
-    nl: "De tegenstelling: méér jobs, niet minder",
+    nl: "Tegenargument: meer jobs, niet minder",
     fr: "La thèse inverse : plus d'emplois, pas moins",
   } as T,
   navViewing: { en: "● Viewing", nl: "● Bekijken", fr: "● Affiché" } as T,
@@ -66,8 +66,8 @@ export const t = {
   // Hero
   heroEyebrow: {
     en: "Your Job Risk · Belgium edition",
-    nl: "Jouw Job Risico · Belgische editie",
-    fr: "Votre risque emploi · édition belge",
+    nl: "Jouw jobrisico · Belgische versie",
+    fr: "Votre risque emploi · version belge",
   } as T,
   heroJobs: { en: "jobs.", nl: "jobs.", fr: "emplois." } as T,
   heroEmployers: { en: "employers.", nl: "werkgevers.", fr: "employeurs." } as T,
@@ -76,6 +76,11 @@ export const t = {
     en: "AI-era restructuring isn't a future event in Belgium. It is showing up in corporate plans, call-centre floors and back-office teams — province by province, role by role.",
     nl: "AI-herstructurering is geen toekomstmuziek in België. Ze duikt op in transformatieplannen, callcenters en back-officeteams — provincie per provincie, functie per functie.",
     fr: "La restructuration liée à l'IA n'est pas un événement futur en Belgique. Elle apparaît dans les plans d'entreprise, les call-centers et les équipes back-office — province par province, métier par métier.",
+  } as T,
+  heroCaveat: {
+    en: "Exposure is not destiny: this measures task pressure, not the probability that any one person loses a job.",
+    nl: "Blootstelling is geen lot: dit meet taakdruk, niet de kans dat één persoon zijn job verliest.",
+    fr: "L'exposition n'est pas un destin : on mesure ici la pression sur les tâches, pas la probabilité qu'une personne perde son emploi.",
   } as T,
   heroCta: { en: "Check my risk →", nl: "Bereken mijn risico →", fr: "Calculer mon risque →" } as T,
   heroStatWorkers: {
@@ -173,8 +178,8 @@ export const t = {
   } as T,
   loHoverHint: {
     en: "Hover a tag for the reasoning. Classifications are editorial judgements based on company statements and press coverage — not a formal causal attribution.",
-    nl: "Beweeg over een label voor de motivering. De classificaties zijn redactionele inschattingen op basis van persmededelingen en bedrijfscommunicatie — geen formele causale toewijzing.",
-    fr: "Survolez une étiquette pour la motivation. Les classifications sont des jugements éditoriaux fondés sur les communiqués et la presse — pas une attribution causale formelle.",
+    nl: "Wijs naar een label om de reden te zien. De classificaties zijn redactionele inschattingen op basis van persmededelingen en bedrijfscommunicatie — geen formele causale toewijzing.",
+    fr: "Survolez une étiquette pour voir la justification. Les classifications sont des jugements éditoriaux fondés sur les communiqués et la presse — pas une attribution causale formelle.",
   } as T,
 
   // Narrative
@@ -228,7 +233,7 @@ export const t = {
   // Footer
   ftSiteName: {
     en: "Your Job Risk · Belgium",
-    nl: "Jouw Job Risico · België",
+    nl: "Jouw jobrisico · België",
     fr: "Votre risque emploi · Belgique",
   } as T,
   ftAbout: {
@@ -266,7 +271,7 @@ export const t = {
   toolHeadline: {
     en: "Click your province. Pick your role. See the number.",
     nl: "Klik je provincie. Kies je beroep. Zie het cijfer.",
-    fr: "Cliquez votre province. Choisissez votre métier. Voyez le chiffre.",
+    fr: "Choisissez votre province. Sélectionnez votre métier. Voyez le chiffre.",
   } as T,
   toolIntro: {
     en: "This is a scenario explorer, not a prediction. Adjust how fast AI gets rolled out across Belgian workplaces and how far forward you want to look, then click into your province and occupation to see the resulting \"task-pressure\" estimate.",
@@ -311,8 +316,8 @@ export const t = {
   } as T,
   toolMagnitudeHelp: {
     en: "Share of this role's task basket plausibly substitutable by AI over the chosen horizon at the chosen adoption speed.",
-    nl: "Aandeel van het takenpakket van dit beroep dat over de gekozen horizon en bij de gekozen adoptiesnelheid plausibel door AI vervangen kan worden.",
-    fr: "Part du panier de tâches de ce métier plausiblement remplaçable par l'IA sur l'horizon et la vitesse d'adoption choisis.",
+    nl: "Aandeel van de taken dat AI in dit scenario plausibel kan overnemen.",
+    fr: "Part des tâches que l'IA pourrait plausiblement reprendre dans ce scénario.",
   } as T,
 
   // Tool — additional labels
@@ -329,7 +334,7 @@ export const t = {
   toolPickProvinceMap: {
     en: "Click your province on the map",
     nl: "Klik je provincie op de kaart",
-    fr: "Cliquez votre province sur la carte",
+    fr: "Cliquez sur votre province sur la carte",
   } as T,
   toolProvinceLabel: { en: "Province", nl: "Provincie", fr: "Province" } as T,
   toolOccupationLabel: { en: "Occupation", nl: "Beroep", fr: "Métier" } as T,
@@ -346,8 +351,8 @@ export const t = {
   } as T,
   toolStartHint: {
     en: "Click one of the 11 provinces on the map to begin.",
-    nl: "Klik op één van de 11 provincies op de kaart om te beginnen.",
-    fr: "Cliquez sur l'une des 11 provinces de la carte pour commencer.",
+    nl: "Klik op één van de 11 provincies op de kaart hieronder om te beginnen.",
+    fr: "Cliquez sur l'une des 11 provinces sur la carte ci-dessous pour commencer.",
   } as T,
   toolDarkerRed: {
     en: "Darker red = higher AI exposure.",
@@ -389,6 +394,15 @@ export const t = {
     fr: "part de votre panier de tâches plausiblement remplaçable",
   } as T,
   toolScenarioLabel: { en: "Scenario", nl: "Scenario", fr: "Scénario" } as T,
+  toolBreakdownTitle: {
+    en: "How this estimate is built",
+    nl: "Hoe deze schatting is opgebouwd",
+    fr: "Comment cette estimation est construite",
+  } as T,
+  toolBreakdownProvince: { en: "Province score", nl: "Provinciescore", fr: "Score de la province" } as T,
+  toolBreakdownOccupation: { en: "Occupation score", nl: "Beroepsscore", fr: "Score du métier" } as T,
+  toolBreakdownAdoption: { en: "Adoption factor", nl: "Adoptiefactor", fr: "Facteur d'adoption" } as T,
+  toolBreakdownHorizon: { en: "Horizon factor", nl: "Horizonfactor", fr: "Facteur d'horizon" } as T,
   toolScenarioSlowShort: { en: "Slow", nl: "Traag", fr: "Lent" } as T,
   toolScenarioCurrentShort: { en: "Current", nl: "Huidig", fr: "Actuel" } as T,
   toolScenarioFastShort: { en: "Fast", nl: "Snel", fr: "Rapide" } as T,

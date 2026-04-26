@@ -69,6 +69,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <LanguageProvider>
           <SiteNav />
           {children}

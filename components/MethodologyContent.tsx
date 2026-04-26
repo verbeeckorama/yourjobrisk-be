@@ -307,8 +307,8 @@ const bodyNl = {
         Het onderliggende construct is de{" "}
         <strong>AI Occupational Exposure (AIOE)-index</strong> van{" "}
         <em>Felten, Raj &amp; Rock (2021)</em>, die AI-toepassingen koppelt
-        aan de O*NET-vaardigheden waarop een beroep steunt. Lees het
-        getal van 0 tot 100 als een <em>relatieve rangschikking</em> van
+        aan de O*NET-vaardigheden waarop een beroep steunt. Lees dit
+        getal van 0–100 als een <em>relatieve rangschikking</em> van
         cognitieve taakblootstelling, niet als een kans op jobverlies.
       </p>
     </>
@@ -327,7 +327,8 @@ const bodyNl = {
         </li>
         <li>
           Het overzetten van elke 4-cijferige SOC naar 4-cijferige ISCO
-          schijnpresentatie zou geven voor een verhalende site als deze.
+          zou onterechte precisie introduceren voor een verhalende site
+          als deze.
         </li>
       </ul>
       <p>
@@ -379,15 +380,15 @@ const bodyNl = {
       </p>
       <ul>
         <li>
-          Hij weerspiegelt <strong>waar werknemers wonen</strong>, niet
+          Dit toont <strong>waar werknemers wonen</strong>, niet
           waar ze werken. Pendelen naar Brussel is significant maar niet
           expliciet gemodelleerd.
         </li>
         <li>
-          De sectorcorrectie is <em>indicatief</em>. Ik heb dit niet door
-          Statbels gedetailleerde regionale sectortabellen gehaald of
-          herwogen op bedrijfsgrootte — beide zouden de scores enkele
-          punten verschuiven.
+          De sectorcorrectie is <em>indicatief</em>. Deze cijfers zijn
+          niet door Statbels gedetailleerde regionale sectortabellen
+          gehaald of herwogen op bedrijfsgrootte — beide zouden de
+          scores enkele punten verschuiven.
         </li>
       </ul>
     </>
@@ -447,7 +448,7 @@ const bodyNl = {
         <strong>oordelen, geen causale toewijzing.</strong> Het
         contrafeitelijke — &quot;zou dit ontslag plaatsgevonden hebben in
         een wereld zonder generatieve AI?&quot; — is werkelijk niet te
-        weten. Beweeg over een label op de homepage voor de
+        weten. Wijs naar een label op de homepage voor de
         eenregelmotivering.
       </p>
     </>
@@ -578,10 +579,10 @@ const bodyFr = {
           important mais n'est pas explicitement modélisé.
         </li>
         <li>
-          L'ajustement sectoriel est <em>indicatif</em>. Je n'ai pas
-          repassé cela par les tables sectorielles régionales détaillées
-          de Statbel ni repondéré par taille d'entreprise — l'un comme
-          l'autre déplaceraient les scores de quelques points.
+          L'ajustement sectoriel est <em>indicatif</em>. Ces chiffres
+          n'ont pas été repassés par les tables sectorielles régionales
+          détaillées de Statbel ni repondérés par taille d'entreprise —
+          l'un comme l'autre déplaceraient les scores de quelques points.
         </li>
       </ul>
     </>
@@ -643,7 +644,7 @@ const bodyFr = {
         <strong>jugements, pas une attribution causale.</strong> Le
         contrefactuel — &quot;ce plan social aurait-il eu lieu dans un
         monde sans IA générative ?&quot; — est véritablement
-        inconnaissable. Survolez une étiquette en page d'accueil pour la
+        inconnaissable. Survolez une étiquette en page d'accueil pour voir la
         justification en une ligne.
       </p>
     </>
@@ -787,6 +788,27 @@ export default function MethodologyContent() {
               Anthropic (2025) — Economic Index
             </SourceLink>{" "}
             — task-level analysis of what Claude is actually used for.
+          </li>
+          <li>
+            <SourceLink href="https://arxiv.org/abs/2503.04761">
+              Handa et al. (2025)
+            </SourceLink>{" "}
+            — Which economic tasks are performed with AI? Evidence from
+            millions of Claude conversations.
+          </li>
+          <li>
+            <SourceLink href="https://www.nber.org/papers/w32487">
+              Acemoglu (2024/2025)
+            </SourceLink>{" "}
+            — The Simple Macroeconomics of AI; a cautious task-based
+            estimate of aggregate productivity and inequality effects.
+          </li>
+          <li>
+            <SourceLink href="https://www.nber.org/papers/w30957">
+              Korinek (2023)
+            </SourceLink>{" "}
+            — Language Models and Cognitive Automation for Economic
+            Research; concrete use-cases for cognitive task automation.
           </li>
           <li>
             <SourceLink href="https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/01/14/Gen-AI-Artificial-Intelligence-and-the-Future-of-Work-542379">

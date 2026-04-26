@@ -29,6 +29,9 @@ export default function Hero() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
           {tr(t.heroSubtitle, lang)}
         </p>
+        <p className="mt-4 max-w-2xl border-l border-accent/70 pl-4 text-sm leading-relaxed text-white/60">
+          {tr(t.heroCaveat, lang)}
+        </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
