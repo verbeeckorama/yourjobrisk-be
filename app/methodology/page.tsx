@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MethodologyContent from "@/components/MethodologyContent";
 
 export const metadata: Metadata = {
-  title: "Methodology — how the Belgian AI-exposure scores are built",
+  title: "Methodology — how the Belgian AI Exposure scores are built",
   description:
     "Province exposure scores, occupation rankings (ISCO-08) and layoff classifications for Belgium, fully sourced. AIOE (Felten, Raj & Rock 2021) cross-checked with Eloundou et al. 2023, ILO 2025, OECD Employment Outlook 2025 and the Anthropic Economic Index. Belgian employment from Statbel LFS 2024.",
   keywords: [
@@ -30,7 +30,7 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Article",
-      headline: "Methodology — how the Belgian AI-exposure scores are built",
+      headline: "Methodology — how the Belgian AI Exposure scores are built",
       description:
         "How province scores, occupation rankings and layoff classifications are built for Your Job Risk Belgium, with sources and caveats.",
       inLanguage: ["en", "nl", "fr"],

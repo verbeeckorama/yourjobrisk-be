@@ -43,7 +43,7 @@ export const t = {
   // Site nav
   navTagline: { en: "Your Job Risk", nl: "Jouw jobrisico", fr: "Risque pour votre emploi" } as T,
   navMethodology: { en: "Methodology →", nl: "Methodologie →", fr: "Méthodologie →" } as T,
-  navAiExposure: { en: "AI exposure", nl: "Blootstelling aan AI", fr: "Exposition à l'IA" } as T,
+  navAiExposure: { en: "AI Exposure", nl: "AI Exposure", fr: "AI Exposure" } as T,
   navAiExposureBlurb: {
     en: "Map · provinces · occupations · layoffs",
     nl: "Kaart · provincies · beroepen · ontslagen",
@@ -79,8 +79,8 @@ export const t = {
   } as T,
   heroCaveat: {
     en: "Exposure is not destiny: this measures task pressure, not the probability that any one person loses a job.",
-    nl: "Deze score zegt niet wat er met jouw job gebeurt: hij meet druk op taken, geen individuele kans op jobverlies.",
-    fr: "Ce score ne dit pas ce qui arrivera à votre emploi : il mesure l'exposition des tâches, pas la probabilité individuelle de perdre son emploi.",
+    nl: "Deze score zegt niet wat er met jouw job gebeurt: hij meet AI Exposure, geen individuele kans op jobverlies.",
+    fr: "Ce score ne dit pas ce qui arrivera à votre emploi : il mesure le score AI Exposure, pas la probabilité individuelle de perdre son emploi.",
   } as T,
   heroCta: { en: "Check my risk →", nl: "Bereken mijn risico →", fr: "Calculer mon risque →" } as T,
   heroStatWorkers: {
@@ -91,8 +91,8 @@ export const t = {
   heroStatProvinces: { en: "Provinces", nl: "Provincies", fr: "Provinces" } as T,
   heroStatElevated: {
     en: "At elevated AI exposure",
-    nl: "Met verhoogde blootstelling aan AI",
-    fr: "À forte exposition à l'IA",
+    nl: "Met verhoogde AI Exposure",
+    fr: "Avec un score AI Exposure élevé",
   } as T,
   heroStatFramework: {
     en: "Occupation framework",
@@ -109,11 +109,11 @@ export const t = {
   } as T,
   geoIntro: {
     en: "It's the square kilometre around Rue de la Loi. Brussels' concentration of EU institutions, banks and consultancies gives it the highest cognitive-AI exposure score in the country — followed closely by the Leuven and Louvain-la-Neuve corridors.",
-    nl: "Het is de vierkante kilometer rond de Wetstraat. De concentratie van EU-instellingen, banken en consultancybureaus in Brussel geeft de hoofdstad de hoogste score voor cognitieve blootstelling aan AI — gevolgd door de assen Leuven en Louvain-la-Neuve.",
+    nl: "Het is de vierkante kilometer rond de Wetstraat. De concentratie van EU-instellingen, banken en consultancybureaus in Brussel geeft de hoofdstad de hoogste score voor cognitieve AI Exposure — gevolgd door de assen Leuven en Louvain-la-Neuve.",
     fr: "C'est le kilomètre carré autour de la rue de la Loi. La concentration d'institutions européennes, de banques et de cabinets-conseils donne à Bruxelles le score le plus élevé du pays — suivie de près par les axes de Louvain et Louvain-la-Neuve.",
   } as T,
-  geoLower: { en: "Lower exposure", nl: "Lagere blootstelling", fr: "Faible exposition" } as T,
-  geoHigher: { en: "Higher exposure", nl: "Hogere blootstelling", fr: "Forte exposition" } as T,
+  geoLower: { en: "Lower exposure", nl: "Lagere AI Exposure", fr: "Score AI Exposure plus faible" } as T,
+  geoHigher: { en: "Higher exposure", nl: "Hogere AI Exposure", fr: "Score AI Exposure plus élevé" } as T,
   geoBoundaries: {
     en: "Boundaries: Eurostat NUTS-2, 2021, 1:20M generalisation.",
     nl: "Grenzen: Eurostat NUTS-2, 2021, schaal 1:20M.",
@@ -121,8 +121,8 @@ export const t = {
   } as T,
   geoMapAria: {
     en: "Choropleth map of Belgian provinces by AI exposure",
-    nl: "Choropletenkaart van Belgische provincies volgens blootstelling aan AI",
-    fr: "Carte choroplèthe des provinces belges par exposition à l'IA",
+    nl: "Choropletenkaart van Belgische provincies volgens AI Exposure",
+    fr: "Carte choroplèthe des provinces belges selon le score AI Exposure",
   } as T,
 
   // Occupations table
@@ -141,7 +141,7 @@ export const t = {
   occHGroup: { en: "Occupation group", nl: "Beroepsgroep", fr: "Groupe de métiers" } as T,
   occHExamples: { en: "Examples", nl: "Voorbeelden", fr: "Exemples" } as T,
   occHWorkers: { en: "Workers", nl: "Werkenden", fr: "Actifs" } as T,
-  occHExposure: { en: "Exposure", nl: "Blootstelling", fr: "Exposition" } as T,
+  occHExposure: { en: "Exposure", nl: "AI Exposure", fr: "AI Exposure" } as T,
 
   // Layoffs strip
   loEyebrow: {
@@ -190,8 +190,8 @@ export const t = {
   } as T,
   narHeadline: {
     en: "A small, service-heavy, multilingual economy sits unusually high on the exposure curve.",
-    nl: "Een kleine, dienstenintensieve, meertalige economie zit ongewoon hoog op de blootstellingscurve.",
-    fr: "Une petite économie tertiaire et multilingue se retrouve étonnamment haut sur la courbe d'exposition.",
+    nl: "Een kleine, dienstenintensieve, meertalige economie zit ongewoon hoog op de AI Exposure-curve.",
+    fr: "Une petite économie tertiaire et multilingue se retrouve étonnamment haut sur la courbe AI Exposure.",
   } as T,
   narP1Pre: { en: "Roughly", nl: "Ongeveer", fr: "Environ" } as T,
   narP1Bold: {
@@ -238,8 +238,8 @@ export const t = {
   } as T,
   ftAbout: {
     en: "An independent, non-commercial research site modelling AI exposure across Belgium's provinces and occupations.",
-    nl: "Een onafhankelijke, niet-commerciële onderzoekssite die blootstelling aan AI modelleert in Belgische provincies en beroepen.",
-    fr: "Un site de recherche indépendant, non commercial, qui modélise l'exposition à l'IA dans les provinces et métiers belges.",
+    nl: "Een onafhankelijke, niet-commerciële onderzoekssite die AI Exposure modelleert in Belgische provincies en beroepen.",
+    fr: "Un site de recherche indépendant, non commercial, qui modélise le score AI Exposure dans les provinces et métiers belges.",
   } as T,
   ftMethodology: { en: "Methodology", nl: "Methodologie", fr: "Méthodologie" } as T,
   ftMethodologyExpl: {
@@ -251,8 +251,8 @@ export const t = {
   ftCaveats: { en: "Caveats", nl: "Kanttekeningen", fr: "Précautions" } as T,
   ftCaveatsBody: {
     en: "Exposure is not the same as displacement. High-AIOE roles can be augmented, deskilled, or eliminated — which outcome wins depends on firm strategy, labour-market institutions and policy. These figures are indicative, not forecasts.",
-    nl: "Blootstelling is niet hetzelfde als verdringing. Functies met hoge AIOE kunnen versterkt, verarmd of geschrapt worden — welke uitkomst wint, hangt af van bedrijfsstrategie, arbeidsmarktinstellingen en beleid. Deze cijfers zijn indicatief, geen voorspellingen.",
-    fr: "L'exposition n'est pas le déplacement. Les rôles à fort AIOE peuvent être augmentés, dégradés ou supprimés — ce qui l'emporte dépend de la stratégie d'entreprise, des institutions du marché du travail et de la politique. Ces chiffres sont indicatifs, pas des prévisions.",
+    nl: "AI Exposure is niet hetzelfde als verdringing. Functies met hoge AIOE kunnen versterkt, verarmd of geschrapt worden — welke uitkomst wint, hangt af van bedrijfsstrategie, arbeidsmarktinstellingen en beleid. Deze cijfers zijn indicatief, geen voorspellingen.",
+    fr: "Le score AI Exposure n'est pas un déplacement d'emploi. Les rôles à fort AIOE peuvent être augmentés, dégradés ou supprimés — ce qui l'emporte dépend de la stratégie d'entreprise, des institutions du marché du travail et de la politique. Ces chiffres sont indicatifs, pas des prévisions.",
   } as T,
   ftCounterview: { en: "Counter-view:", nl: "Tegenargument:", fr: "Thèse inverse :" } as T,
   ftCounterviewLink: {
@@ -274,9 +274,9 @@ export const t = {
     fr: "Choisissez votre province. Sélectionnez votre métier. Voyez le chiffre.",
   } as T,
   toolIntro: {
-    en: "A scenario tool for estimating where AI task pressure may be higher in Belgium. Adjust how fast AI gets rolled out across workplaces and how far forward you want to look, then choose your province and occupation.",
-    nl: "Een scenariotool om te schatten waar AI-taakdruk in België hoger kan liggen. Stel in hoe snel AI uitrolt op de werkvloer en hoe ver vooruit je kijkt, en kies daarna je provincie en beroep.",
-    fr: "Un outil de scénarios pour estimer où la pression de l'IA sur les tâches pourrait être plus forte en Belgique. Réglez la vitesse de déploiement dans les entreprises et l'horizon, puis choisissez votre province et votre métier.",
+    en: "A simple scenario tool for estimating where AI exposure may be higher in Belgium. Pick a scenario, province and occupation; the result is an estimate, not a forecast.",
+    nl: "Een eenvoudige scenariotool om te schatten waar AI Exposure in België hoger kan liggen. Kies een scenario, provincie en beroep; de uitkomst is een schatting, geen voorspelling.",
+    fr: "Un outil simple pour estimer où le score AI Exposure pourrait être plus élevé en Belgique. Choisissez un scénario, une province et un métier ; le résultat est une estimation, pas une prévision.",
   } as T,
   toolAdoption: { en: "Adoption scenario", nl: "Adoptiescenario", fr: "Scénario d'adoption" } as T,
   toolHorizon: { en: "Horizon", nl: "Horizon", fr: "Horizon" } as T,
@@ -291,14 +291,19 @@ export const t = {
     fr: "Commencez par le scénario",
   } as T,
   toolWizardScenarioHelp: {
-    en: "Choose the adoption speed and time horizon. The next steps use this scenario to calculate province and occupation pressure.",
-    nl: "Kies de adoptiesnelheid en de tijdshorizon. De volgende stappen gebruiken dit scenario om de druk per provincie en beroep te berekenen.",
-    fr: "Choisissez la vitesse d'adoption et l'horizon. Les étapes suivantes utilisent ce scénario pour calculer l'exposition par province et par métier.",
+    en: "Choose the adoption speed and horizon. Then click Next.",
+    nl: "Kies wat je wil testen. Klik daarna op Volgende.",
+    fr: "Choisissez ce que vous voulez tester. Cliquez ensuite sur Suivant.",
+  } as T,
+  toolWizardAutoNext: {
+    en: "Click one option to continue.",
+    nl: "Klik één optie om verder te gaan.",
+    fr: "Cliquez sur une option pour continuer.",
   } as T,
   toolWizardNationalPreview: {
     en: "National preview",
-    nl: "Nationale preview",
-    fr: "Aperçu national",
+    nl: "Nationale indicatie",
+    fr: "Estimation nationale",
   } as T,
   toolWizardBack: { en: "Back", nl: "Terug", fr: "Retour" } as T,
   toolWizardNext: { en: "Next", nl: "Volgende", fr: "Suivant" } as T,
@@ -338,9 +343,9 @@ export const t = {
     fr: "Choisissez un groupe de métiers.",
   } as T,
   toolMagnitude: {
-    en: "Modelled task-pressure",
-    nl: "Gemodelleerde druk op taken",
-    fr: "Exposition des tâches (modélisée)",
+    en: "Modelled AI exposure",
+    nl: "Gemodelleerde AI Exposure",
+    fr: "AI Exposure modélisée",
   } as T,
   toolMagnitudeHelp: {
     en: "Share of this role's task basket plausibly substitutable by AI over the chosen horizon at the chosen adoption speed.",
@@ -350,14 +355,14 @@ export const t = {
 
   // Tool — additional labels
   toolWorkersUnderPressure: {
-    en: "Belgian workers under task-pressure at this scenario",
-    nl: "Belgische werkenden met verhoogde druk op taken in dit scenario",
-    fr: "actifs belges dont les tâches sont exposées dans ce scénario",
+    en: "Belgian workers at elevated AI exposure in this scenario",
+    nl: "Belgische werkenden met verhoogde AI Exposure in dit scenario",
+    fr: "actifs belges avec un score AI Exposure élevé dans ce scénario",
   } as T,
   toolFormula: {
     en: "= Σ (group exposure × adoption × horizon/15) × employment share",
-    nl: "= Σ (blootstelling per groep × adoptie × horizon/15) × tewerkstellingsaandeel",
-    fr: "= Σ (exposition par groupe × adoption × horizon/15) × part dans l'emploi",
+    nl: "= Σ (AI Exposure per groep × adoptie × horizon/15) × tewerkstellingsaandeel",
+    fr: "= Σ (score AI Exposure par groupe × adoption × horizon/15) × part dans l'emploi",
   } as T,
   toolPickProvinceMap: {
     en: "Click your province on the map",
@@ -373,9 +378,9 @@ export const t = {
     fr: "Choisissez votre métier",
   } as T,
   toolPickOccupationHelp: {
-    en: "Choose your occupation family (ISCO-08 major group). The site combines its AIOE-derived score with the province score above and the current scenario to produce your task-pressure estimate.",
-    nl: "Kies je beroepsgroep (ISCO-08 hoofdgroep). De site combineert de AIOE-score met de provinciescore en het huidige scenario tot een schatting van de druk op je taken.",
-    fr: "Choisissez votre famille de métiers (grand groupe CITP-08). Le site combine son score AIOE avec celui de la province et le scénario en cours pour estimer l'exposition de vos tâches.",
+    en: "Choose your occupation family. The tool combines it with your province and scenario.",
+    nl: "Kies je beroepsgroep. De tool combineert die met je provincie en scenario.",
+    fr: "Choisissez votre famille de métiers. L'outil la combine avec votre province et votre scénario.",
   } as T,
   toolStartHint: {
     en: "Click one of the 11 provinces on the map to begin.",
@@ -384,8 +389,8 @@ export const t = {
   } as T,
   toolDarkerRed: {
     en: "Darker red = higher AI exposure.",
-    nl: "Donkerder rood = hogere blootstelling aan AI.",
-    fr: "Rouge plus foncé = exposition plus élevée à l'IA.",
+    nl: "Donkerder rood = hogere AI Exposure.",
+    fr: "Rouge plus foncé = AI Exposure plus élevée.",
   } as T,
   toolSelectedProvince: {
     en: "Selected province",
@@ -394,17 +399,17 @@ export const t = {
   } as T,
   toolWorkers: { en: "Workers", nl: "Werkenden", fr: "Actifs" } as T,
   toolUnderPressure: {
-    en: "Under task-pressure",
-    nl: "Taken onder druk",
-    fr: "Tâches exposées",
+    en: "Elevated AI exposure",
+    nl: "Verhoogde AI Exposure",
+    fr: "Score AI Exposure élevé",
   } as T,
   toolRegion: { en: "Region", nl: "Regio", fr: "Région" } as T,
   toolNuts: { en: "NUTS-2", nl: "NUTS-2", fr: "NUTS-2" } as T,
   toolYourEstimate: { en: "Your estimate", nl: "Jouw schatting", fr: "Votre estimation" } as T,
   toolCompositeExposure: {
     en: "Composite exposure",
-    nl: "Samengestelde blootstelling",
-    fr: "Exposition composite",
+    nl: "Samengestelde score",
+    fr: "Score composite",
   } as T,
   toolCompositeHint: {
     en: "avg. of province + occupation (0–100)",
@@ -412,9 +417,9 @@ export const t = {
     fr: "moyenne province + métier (0–100)",
   } as T,
   toolTaskPressure: {
-    en: "Task-pressure",
-    nl: "Druk op taken",
-    fr: "Exposition des tâches",
+    en: "AI exposure",
+    nl: "AI Exposure",
+    fr: "AI Exposure",
   } as T,
   toolTaskPressureHint: {
     en: "share of your task-basket plausibly substitutable",
@@ -443,7 +448,7 @@ export const t = {
   } as T,
   toolSensitivityProvince: { en: "Province", nl: "Provincie", fr: "Province" } as T,
   toolSensitivityOccupation: { en: "Occupation", nl: "Beroep", fr: "Métier" } as T,
-  toolSensitivityPressure: { en: "Task-pressure", nl: "Druk op taken", fr: "Exposition des tâches" } as T,
+  toolSensitivityPressure: { en: "AI exposure", nl: "AI Exposure", fr: "AI Exposure" } as T,
   toolSensitivityScale: { en: "score out of 100", nl: "score op 100", fr: "score sur 100" } as T,
   toolSensitivityLowBaseHigh: { en: "low / base / high", nl: "laag / basis / hoog", fr: "bas / central / haut" } as T,
   toolLimitsTitle: {
@@ -471,9 +476,9 @@ export const t = {
     fr: "Choisissez un métier ici",
   } as T,
   toolDisclaimer: {
-    en: "Task-pressure is not the probability of losing your job. It is an indicative measure of how much of what you do today could be done, in whole or in part, by current AI systems at the chosen adoption level and horizon.",
-    nl: "Druk op taken is niet hetzelfde als de kans om je job te verliezen. Het is een indicatieve maat voor hoeveel van wat je vandaag doet, geheel of gedeeltelijk gedaan zou kunnen worden door huidige AI-systemen bij het gekozen adoptieniveau en de gekozen horizon.",
-    fr: "L'exposition des tâches n'est pas la probabilité de perdre votre emploi. C'est une mesure indicative de la part de ce que vous faites aujourd'hui qui pourrait être réalisée, en tout ou en partie, par les systèmes d'IA actuels au niveau d'adoption et à l'horizon choisis.",
+    en: "AI exposure is not the probability of losing your job. It is an indicative measure of how much of today's task mix current AI systems could affect under the chosen scenario.",
+    nl: "AI Exposure is niet hetzelfde als de kans om je job te verliezen. Het is een indicatieve maat voor hoeveel van je huidige takenpakket door AI geraakt kan worden in het gekozen scenario.",
+    fr: "Le score AI Exposure n'est pas la probabilité de perdre votre emploi. C'est une mesure indicative de la part de vos tâches actuelles que l'IA pourrait toucher dans le scénario choisi.",
   } as T,
   toolStepProvinceTitle: {
     en: "Step 2",
@@ -502,8 +507,8 @@ export const t = {
   } as T,
   toolHigher: {
     en: "Higher exposure",
-    nl: "Hogere blootstelling",
-    fr: "Forte exposition",
+    nl: "Hogere AI Exposure",
+    fr: "Score AI Exposure plus élevé",
   } as T,
 
   // Switcher tooltip
@@ -539,8 +544,8 @@ export const provinceNameI18n: Record<string, T> = {
 export const provinceNoteI18n: Record<string, T> = {
   BE25: {
     en: "Manufacturing, logistics and tourism dampen cognitive exposure.",
-    nl: "Industrie, logistiek en toerisme dempen de cognitieve blootstelling.",
-    fr: "L'industrie, la logistique et le tourisme atténuent l'exposition cognitive.",
+    nl: "Industrie, logistiek en toerisme dempen de cognitieve AI Exposure.",
+    fr: "L'industrie, la logistique et le tourisme atténuent le score AI Exposure cognitif.",
   },
   BE23: {
     en: "Ghent's universities and biotech raise the professional share.",

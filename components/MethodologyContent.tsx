@@ -54,8 +54,8 @@ const headlines: Record<Lang, string> = {
 
 const intros: Record<Lang, string> = {
   en: "This page walks through every figure on the site: the province exposure scores, the occupation ranking, the layoff classifications, and the deliberate choices that shaped each one.",
-  nl: "Deze pagina overloopt elk cijfer op de site: de provinciescores voor blootstelling, de beroepenranking, de ontslagclassificaties, en de bewuste keuzes die elk daarvan vormgegeven hebben.",
-  fr: "Cette page passe en revue chaque chiffre du site : les scores d'exposition par province, le classement des métiers, la classification des plans sociaux, et les choix délibérés qui ont façonné chacun.",
+  nl: "Deze pagina overloopt elk cijfer op de site: de provinciale AI Exposure-scores, de beroepenranking, de ontslagclassificaties, en de bewuste keuzes die elk daarvan vormgegeven hebben.",
+  fr: "Cette page passe en revue chaque chiffre du site : les scores AI Exposure par province, le classement des métiers, la classification des plans sociaux, et les choix délibérés qui ont façonné chacun.",
 };
 
 const backToMap: Record<Lang, string> = {
@@ -68,8 +68,8 @@ const backToMap: Record<Lang, string> = {
 const titles = {
   s1: {
     en: "1. What \"AI exposure\" means here",
-    nl: "1. Wat \"blootstelling aan AI\" hier betekent",
-    fr: "1. Ce que \"exposition à l'IA\" signifie ici",
+    nl: "1. Wat \"AI Exposure\" hier betekent",
+    fr: "1. Ce que \"AI Exposure\" signifie ici",
   },
   s2: {
     en: "2. Occupation scores (ISCO-08 major groups)",
@@ -78,8 +78,8 @@ const titles = {
   },
   s3: {
     en: "3. Province exposure scores",
-    nl: "3. Provinciale blootstellingsscores",
-    fr: "3. Scores d'exposition par province",
+    nl: "3. Provinciale AI Exposure-scores",
+    fr: "3. Scores AI Exposure par province",
   },
   s4: {
     en: "4. Province totals and headline numbers",
@@ -296,7 +296,7 @@ const bodyNl = {
   s1: (
     <>
       <p>
-        Blootstelling is <em>niet</em> verdringing. Een hoge score betekent
+        AI Exposure is <em>niet</em> hetzelfde als verdringing. Een hoge score betekent
         dat een job uit taken bestaat die de AI-systemen van vandaag (grote
         taalmodellen, beeldsystemen, tabulaire ML, procesautomatisering)
         deels kunnen overnemen. Of dat tot ontslagen, augmentatie, nieuwe
@@ -309,7 +309,7 @@ const bodyNl = {
         <em>Felten, Raj &amp; Rock (2021)</em>, die AI-toepassingen koppelt
         aan de O*NET-vaardigheden waarop een beroep steunt. Lees dit
         getal van 0–100 als een <em>relatieve rangschikking</em> van
-        cognitieve taakblootstelling, niet als een kans op jobverlies.
+        cognitieve AI Exposure, niet als een kans op jobverlies.
       </p>
     </>
   ),
@@ -402,7 +402,7 @@ const bodyNl = {
         Belgische werkende beroepsbevolking.
       </p>
       <p>
-        Het aggregaat <strong>&quot;met verhoogde blootstelling aan AI&quot;</strong>{" "}
+        Het aggregaat <strong>&quot;met verhoogde AI Exposure&quot;</strong>{" "}
         telt werkenden in ISCO-groepen met een score ≥ 60 op de
         beroepenschaal — kenniswerkers, managers, technici en
         administratief personeel. Dat is een verdedigbare drempel, maar
@@ -431,7 +431,7 @@ const bodyNl = {
           <strong className="text-amber-300">AI plausibel</strong> — de
           opgegeven oorzaak is vooral markt, vraag of regelgeving, maar
           het <em>profiel van de geschrapte rollen</em> (administratie,
-          hoofdkantoor, R&amp;D-ondersteuning) zit in de hoge-blootstellingszone.
+          hoofdkantoor, R&amp;D-ondersteuning) zit in de hoge AI Exposure-zone.
           Voorbeeld: bpost back-office, AGC Glass HQ / R&amp;D, Pfizer
           commerciële efficiëntie.
         </li>
@@ -485,7 +485,7 @@ const bodyFr = {
   s1: (
     <>
       <p>
-        L'exposition n'est <em>pas</em> le remplacement. Un score élevé
+        Le score AI Exposure ne mesure <em>pas</em> un remplacement. Un score élevé
         signifie qu'un emploi est composé de tâches que les systèmes d'IA
         actuels (grands modèles de langage, vision, ML tabulaire,
         automatisation de processus) peuvent prendre en charge en partie.
@@ -499,7 +499,7 @@ const bodyFr = {
         <em>Felten, Raj &amp; Rock (2021)</em>, qui relie les applications
         de l'IA aux capacités O*NET dont dépend une profession. Lisez le
         chiffre de 0 à 100 comme un <em>classement relatif</em>{" "}
-        d'exposition cognitive, pas comme une probabilité de perte
+        du score AI Exposure cognitif, pas comme une probabilité de perte
         d'emploi.
       </p>
     </>
@@ -597,7 +597,7 @@ const bodyFr = {
       </p>
       <p>
         L'agrégat{" "}
-        <strong>&quot;à exposition élevée à l'IA&quot;</strong> compte les
+        <strong>&quot;avec un score AI Exposure élevé&quot;</strong> compte les
         actifs dans les groupes CITP avec un score ≥ 60 sur l'échelle
         métier — professions intellectuelles, cadres, techniciens et
         personnel administratif. Seuil défendable, mais c'est un seuil :
@@ -626,8 +626,8 @@ const bodyFr = {
           <strong className="text-amber-300">IA plausible</strong> — la
           cause invoquée est principalement de marché, de demande ou de
           réglementation, mais le <em>profil des rôles supprimés</em>{" "}
-          (administratif, siège, support R&amp;D) se trouve en zone de
-          forte exposition. Exemple : back-office bpost, siège/R&amp;D
+          (administratif, siège, support R&amp;D) se trouve dans une zone à
+          score AI Exposure élevé. Exemple : back-office bpost, siège/R&amp;D
           AGC Glass, efficacité commerciale Pfizer.
         </li>
         <li>
@@ -694,7 +694,7 @@ const sourcesIntro: Record<Lang, { core: string; cross: string; be: string; layo
       "Last data refresh: April 2026. The AIOE itself has not been rewritten since 2021 — newer work (ILO, OECD, Anthropic) extends it rather than replacing it, so the ranking is stable; absolute levels should be read with a wider confidence band than the two-digit scores suggest.",
   },
   nl: {
-    core: "Kernconstruct voor blootstelling:",
+    core: "Kernconstruct voor AI Exposure:",
     cross: "Gekruisvalideerd met recenter taakblootstellingswerk:",
     be: "Belgische arbeidsmarkt en geografie:",
     layoffs: "Ontslagaankondigingen (april 2024 – april 2026):",
@@ -702,7 +702,7 @@ const sourcesIntro: Record<Lang, { core: string; cross: string; be: string; layo
       "Laatste data-update: april 2026. De AIOE zelf is sinds 2021 niet herschreven — recenter werk (ILO, OESO, Anthropic) breidt hem uit in plaats van hem te vervangen, dus de rangschikking is stabiel; absolute niveaus moeten met een ruimere betrouwbaarheidsmarge gelezen worden dan de tweecijferige scores suggereren.",
   },
   fr: {
-    core: "Construct d'exposition de base :",
+    core: "Construct de base pour le score AI Exposure :",
     cross: "Recoupé avec des travaux plus récents sur l'exposition aux tâches :",
     be: "Marché du travail et géographie belges :",
     layoffs: "Annonces de plans sociaux (avril 2024 – avril 2026) :",

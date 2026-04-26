@@ -40,7 +40,7 @@ function exposureBadgeClass(score: number) {
   return "bg-[#2a2a28] text-white";
 }
 
-// "Displacement pressure" model: the AI-era share of a worker's task basket
+// AI Exposure model: the AI-era share of a worker's task basket
 // that is plausibly substitutable over a given horizon.
 //   pressure = exposure/100 × adoption × horizonFactor
 // This is deliberately simple — a slider-driven narrative, not a forecast.
@@ -102,6 +102,12 @@ export default function Tool({ features }: Props) {
 
   const handleSelectProvince = (nuts: string) => {
     setSelectedNuts(nuts);
+    setWizardStep(2);
+  };
+
+  const handleSelectOccupation = (isco: string) => {
+    setSelectedIsco(isco);
+    setWizardStep(3);
   };
 
   const adoption = scenario === "slow" ? 0.25 : scenario === "fast" ? 0.65 : 0.4;
@@ -213,7 +219,7 @@ export default function Tool({ features }: Props) {
         <WizardProgress steps={wizardSteps} currentStep={wizardStep} />
 
         {wizardStep === 0 ? (
-          <div className="mt-8 grid gap-8 md:grid-cols-[1fr,320px]">
+          <div className="mt-8 grid gap-6 md:grid-cols-[1fr,260px]">
             <div>
               <div className="text-xs uppercase tracking-[0.25em] text-accent">
                 {tr(t.toolStepScenarioTitle, lang)}
@@ -221,22 +227,18 @@ export default function Tool({ features }: Props) {
               <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
                 {tr(t.toolWizardScenarioHeadline, lang)}
               </h2>
-              <p className="mt-3 max-w-2xl text-white/60">
+              <p className="mt-3 max-w-xl text-white/60">
                 {tr(t.toolWizardScenarioHelp, lang)}
               </p>
 
-              <div className="mt-8">
-                <div className="mb-3 text-xs uppercase tracking-[0.25em] text-white/50">
-                  {tr(t.toolAdoption, lang)}
-                </div>
-                <div className="flex flex-wrap gap-2">
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
                   {(["slow", "current", "fast"] as const).map((s) => {
                     const active = s === scenario;
                     return (
                       <button
                         key={s}
                         onClick={() => setScenario(s)}
-                        className={`rounded-sm border px-3 py-2 text-sm transition ${
+                        className={`rounded-sm border p-4 text-left text-sm transition ${
                           active
                             ? "border-accent bg-accent/10 text-accent"
                             : "border-white/15 text-white/60 hover:border-white/40 hover:text-white"
@@ -246,7 +248,6 @@ export default function Tool({ features }: Props) {
                       </button>
                     );
                   })}
-                </div>
               </div>
 
               <div className="mt-8 max-w-md">
@@ -280,9 +281,6 @@ export default function Tool({ features }: Props) {
               <p className="mt-2 text-sm text-white/60">
                 {tr(t.toolWorkersUnderPressure, lang)}
               </p>
-              <p className="mt-5 text-xs text-white/40">
-                {tr(t.toolFormula, lang)}
-              </p>
             </aside>
           </div>
         ) : null}
@@ -297,6 +295,9 @@ export default function Tool({ features }: Props) {
                 <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
                   {tr(t.toolPickProvinceMap, lang)}
                 </h2>
+                <p className="mt-2 text-sm text-white/50">
+                  {tr(t.toolWizardAutoNext, lang)}
+                </p>
               </div>
               <SelectionBadge
                 label={tr(t.toolProvinceLabel, lang)}
@@ -483,6 +484,9 @@ export default function Tool({ features }: Props) {
                 <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
                   {tr(t.toolPickOccupationHeadline, lang)}
                 </h2>
+                <p className="mt-2 text-sm text-white/50">
+                  {tr(t.toolWizardAutoNext, lang)}
+                </p>
               </div>
               <SelectionBadge
                 label={tr(t.toolOccupationLabel, lang)}
@@ -506,7 +510,7 @@ export default function Tool({ features }: Props) {
                   return (
                     <button
                       key={o.isco}
-                      onClick={() => setSelectedIsco(o.isco)}
+                      onClick={() => handleSelectOccupation(o.isco)}
                       className={`rounded-sm border p-3 text-left transition ${
                         active
                           ? "border-accent bg-accent/10"
@@ -657,21 +661,15 @@ export default function Tool({ features }: Props) {
                 {tr(t.toolWizardChangeScenario, lang)}
               </button>
             ) : null}
-            {wizardStep < 3 ? (
+            {wizardStep === 0 ? (
               <button
                 type="button"
                 onClick={() =>
                   goToStep(Math.min(3, wizardStep + 1) as WizardStep)
                 }
-                disabled={
-                  (wizardStep === 1 && !selectedProvince) ||
-                  (wizardStep === 2 && !selectedOccupation)
-                }
                 className="rounded-sm border border-accent bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-ink disabled:cursor-not-allowed disabled:border-white/15 disabled:bg-white/5 disabled:text-white/35"
               >
-                {wizardStep === 2
-                  ? tr(t.toolWizardShowEstimate, lang)
-                  : tr(t.toolWizardNext, lang)}
+                {tr(t.toolWizardNext, lang)}
               </button>
             ) : null}
           </div>

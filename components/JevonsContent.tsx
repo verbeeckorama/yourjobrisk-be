@@ -293,7 +293,7 @@ const content: Record<Lang, Content> = {
     h1Accent: "doet groeien",
     h1Post: "?",
     intro:
-      "De rest van deze site behandelt blootstelling aan AI als risico: taken die een model aankan, zijn taken die een werknemer kan verliezen. Deze pagina draait dat om. Als kenniswerk 10× goedkoper wordt, leert de geschiedenis dat de totale vraag ernaar kan stíjgen, niet dalen. Steenkool in 1865. Geldautomaten in de jaren '90. Code in 2026?",
+      "De rest van deze site behandelt AI Exposure als risico: taken die een model aankan, zijn taken die een werknemer kan verliezen. Deze pagina draait dat om. Als kenniswerk 10× goedkoper wordt, leert de geschiedenis dat de totale vraag ernaar kan stíjgen, niet dalen. Steenkool in 1865. Geldautomaten in de jaren '90. Code in 2026?",
     ctaSignals: "Belgische signalen →",
     ctaPhases: "Fase 1 vs fase 2",
     statYear: "Jaar dat Jevons publiceerde",
@@ -475,7 +475,7 @@ const content: Record<Lang, Content> = {
     phase1: {
       eyebrow: "Fase 01 · Vandaag",
       title: "De zichtbare, pijnlijke fase.",
-      p1: "Bedrijven verzilveren de productiviteitswinst als kostenbesparing. Ontslagen treffen vooral de rollen met hoge AIOE-blootstelling. Juniors worden als eersten geschrapt. De nieuwsstroom wordt gedomineerd door verdringingsverhalen.",
+      p1: "Bedrijven verzilveren de productiviteitswinst als kostenbesparing. Ontslagen treffen vooral de rollen met hoge AI Exposure. Juniors worden als eersten geschrapt. De nieuwsstroom wordt gedomineerd door verdringingsverhalen.",
       p2: "",
     },
     phase1HerePre: "België zit hier vandaag. De ",
@@ -501,7 +501,7 @@ const content: Record<Lang, Content> = {
     h1Accent: "grandir",
     h1Post: " les emplois qu'elle semble tuer ?",
     intro:
-      "Le reste du site traite l'exposition à l'IA comme un risque : les tâches qu'un modèle peut faire sont des tâches qu'un travailleur peut perdre. Cette page renverse le cadre. Si le travail cognitif devient 10× moins cher, l'histoire dit que la demande totale peut augmenter, pas diminuer. Le charbon en 1865. Les distributeurs dans les années 90. Le code en 2026 ?",
+      "Le reste du site traite le score AI Exposure comme un risque : les tâches qu'un modèle peut faire sont des tâches qu'un travailleur peut perdre. Cette page renverse le cadre. Si le travail cognitif devient 10× moins cher, l'histoire dit que la demande totale peut augmenter, pas diminuer. Le charbon en 1865. Les distributeurs dans les années 90. Le code en 2026 ?",
     ctaSignals: "Signaux belges →",
     ctaPhases: "Phase 1 vs phase 2",
     statYear: "Année de publication de Jevons",

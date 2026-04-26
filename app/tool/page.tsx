@@ -3,9 +3,9 @@ import Tool from "@/components/Tool";
 import { loadBelgiumFeatures } from "@/lib/geoData";
 
 export const metadata: Metadata = {
-  title: "Check my AI risk — Belgian AI-exposure tool",
+  title: "Check my AI risk — Belgian AI Exposure tool",
   description:
-    "Pick your Belgian province, your ISCO occupation group and an AI-adoption scenario, then see your modelled task-pressure estimate. A scenario explorer for the Belgian labour market — not a forecast.",
+    "Pick your Belgian province, your ISCO occupation group and an AI-adoption scenario, then see your modelled AI Exposure estimate. A scenario explorer for the Belgian labour market — not a forecast.",
   keywords: [
     "AI risk Belgium",
     "AI exposure tool",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Check my AI risk — Belgium",
     description:
-      "Pick a province, pick a role, see the number. Belgian AI-exposure scenario explorer.",
+      "Pick a province, pick a role, see the number. Belgian AI Exposure scenario explorer.",
     url: "/tool",
   },
 };
@@ -32,7 +32,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       description:
-        "A Belgian AI-exposure scenario explorer that combines province, occupation group, adoption scenario and time horizon into a modelled task-pressure estimate.",
+        "A Belgian AI Exposure scenario explorer that combines province, occupation group, adoption scenario and time horizon into a modelled AI Exposure estimate.",
       inLanguage: ["en", "nl", "fr"],
       isPartOf: { "@type": "WebSite", name: "Your Job Risk · Belgium" },
       mainEntityOfPage: "/tool",
