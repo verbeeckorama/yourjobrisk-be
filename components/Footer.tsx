@@ -28,6 +28,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-1 text-xs text-white/40">
               <li>Felten, Raj &amp; Rock (2021) · Eloundou et al. (2023)</li>
               <li>ILO 2025 · OECD 2024/25 · Anthropic Economic Index 2025</li>
+              <li>Gimbel et al. 2025 · junior-worker effects</li>
               <li>ISCO-08 · Statbel LFS 2024</li>
               <li>Eurostat NUTS-2 2021</li>
             </ul>

@@ -160,10 +160,10 @@ const bodyEn = {
         — Eloundou et&nbsp;al.&nbsp;(OpenAI, 2023) on GPT exposure, the
         ILO&apos;s <em>Generative AI and Jobs</em> refreshes (2023 and the
         2025 update), the OECD Employment Outlook 2023–2025 chapters on
-        AI, and the <em>Anthropic Economic Index</em> (2025), which
-        measures what tasks Claude users are actually delegating to the
-        model. All four agree on the direction of the ranking, even where
-        absolute scores differ.
+        AI, the <em>Anthropic Economic Index</em> (2025), and newer
+        firm-level evidence on junior employment at GenAI-adopting firms.
+        They agree on the direction of the ranking, even where absolute
+        scores differ.
       </p>
     </>
   ),
@@ -345,10 +345,10 @@ const bodyNl = {
         meeneemt — Eloundou et&nbsp;al. (OpenAI, 2023) over GPT-blootstelling,
         de ILO-update <em>Generative AI and Jobs</em> (2023 en de update
         van 2025), de OESO Employment Outlook 2023–2025 hoofdstukken over
-        AI, en de <em>Anthropic Economic Index</em> (2025), die meet
-        welke taken Claude-gebruikers daadwerkelijk aan het model
-        delegeren. Alle vier zijn het eens over de richting van de
-        rangschikking, zelfs waar de absolute scores verschillen.
+        AI, de <em>Anthropic Economic Index</em> (2025), en recenter
+        bewijs op bedrijfsniveau over junior jobs bij bedrijven die GenAI
+        invoeren. Ze zijn het eens over de richting van de rangschikking,
+        zelfs waar de absolute scores verschillen.
       </p>
     </>
   ),
@@ -535,11 +535,11 @@ const bodyFr = {
         spécifiquement l'IA générative — Eloundou et&nbsp;al. (OpenAI,
         2023) sur l'exposition aux GPT, les mises à jour de l'OIT
         <em> Generative AI and Jobs</em> (2023 puis 2025), les chapitres
-        IA de l'OECD Employment Outlook 2023–2025 et l'<em>Anthropic
-        Economic Index</em> (2025) qui mesure les tâches que les
-        utilisateurs de Claude délèguent réellement au modèle. Tous
-        s'accordent sur la direction du classement, même si les niveaux
-        absolus diffèrent.
+        IA de l'OECD Employment Outlook 2023–2025, l'<em>Anthropic
+        Economic Index</em> (2025), et des données récentes au niveau des
+        entreprises sur l'emploi junior dans les firmes qui adoptent la
+        GenAI. Tous s'accordent sur la direction du classement, même si
+        les niveaux absolus diffèrent.
       </p>
     </>
   ),
@@ -788,6 +788,14 @@ export default function MethodologyContent() {
               Anthropic (2025) — Economic Index
             </SourceLink>{" "}
             — task-level analysis of what Claude is actually used for.
+          </li>
+          <li>
+            <SourceLink href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5425555">
+              Gimbel, Hosseini &amp; Lichtinger (2025)
+            </SourceLink>{" "}
+            — Generative AI as seniority-biased technological change;
+            firm-level evidence that junior employment falls at
+            GenAI-adopting firms.
           </li>
           <li>
             <SourceLink href="https://arxiv.org/abs/2503.04761">
