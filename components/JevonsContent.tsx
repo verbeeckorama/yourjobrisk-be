@@ -1040,6 +1040,11 @@ export default function JevonsContent() {
               </SourceLink>
             </li>
             <li>
+              <SourceLink href="https://aleximas.substack.com/p/what-will-be-scarce">
+                Imas (2026) — What will be scarce?
+              </SourceLink>
+            </li>
+            <li>
               <SourceLink href="https://arxiv.org/abs/2503.04761">
                 Handa et al. (2025) — Claude task-use evidence
               </SourceLink>

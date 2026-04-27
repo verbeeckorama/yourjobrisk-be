@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "AI exposure Belgium",
     "generative AI labour market",
     "AI productivity",
+    "AI structural change",
     "Belgian labour market 2026",
     "AI augmentation",
     "future of work Belgium",
